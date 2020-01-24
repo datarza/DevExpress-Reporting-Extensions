@@ -41,6 +41,7 @@ These extensions make the creating DevExpress Reports easier and clear. Instead 
   {
     ((XtraReport)sender).DataSource = logic.GetReportData();
   }
+  
   public partial class ReportData
   {
     public IList<ReportItem> Items { get; set; }
