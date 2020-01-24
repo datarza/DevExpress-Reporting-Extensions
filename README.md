@@ -37,7 +37,7 @@ These extensions make the creating DevExpress Reports easier and clear. Instead 
   
   private void DataSourceDemanded(object sender, EventArgs e)
   {
-    ((XtraReport)sender).DataSource = logic.GetReportData();
+    ((XtraReport)sender).DataSource = GetReportData();
   }
   
   public partial class ReportData
@@ -60,5 +60,41 @@ These extensions make the creating DevExpress Reports easier and clear. Instead 
 
     public decimal? Costs { get; set; }
     public decimal? Profit { get; set; }
+  }
+  
+  private ReportData GetReportData()
+  {
+    return new ReportData()
+    {
+      Items = new List<ReportItem>()
+      {
+        new ReportItem
+        {
+          ID  = 1,
+          Number  = "Num1",
+          Name = "Name1",
+          JobType = "Type1",
+          JobLocation = "Location1",
+          ProjectManager = "Persona",
+          RecievedDate = DateTime.Today.AddMonths(-2),
+          CompletedDate = DateTime.Today.AddDays(-10),
+          Costs  = 11,
+          Profit  = 133
+        },
+        new ReportItem
+        {
+          ID  = 222,
+          Number  = "Num2",
+          Name = "Name2",
+          Type = "Type1",
+          Location = "Location2",
+          ProjectManager = "Persona",
+          RecievedDate = DateTime.Today.AddMonths(-3),
+          CompletedDate = DateTime.Today.AddDays(-30),
+          Costs  = 14,
+          Profit  = 13,
+        }
+      };
+    }
   }
 ```
