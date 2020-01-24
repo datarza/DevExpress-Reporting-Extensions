@@ -5,7 +5,7 @@ These extensions make the creating DevExpress Reports easier and clear. Instead 
   {
     var report = new XtraReport();
     
-    this.InitializeDataMember(nameof(ReportData.Items));
+    report.InitializeDataMember(nameof(ReportData.Items));
 
     report.AddReportHeader(title);
 
