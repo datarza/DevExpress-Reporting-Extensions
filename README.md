@@ -1,5 +1,3 @@
-# DevExpress-Report-Extensions
-
 These extensions make the creating DevExpress Reports easier and clear. Instead of using the Report Designer developer can do it directly in C# code:
 
  ```csharp
