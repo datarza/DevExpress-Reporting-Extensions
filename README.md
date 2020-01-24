@@ -1,31 +1,8 @@
 # DevExpress-Report-Extensions
 
-These extensions make the creating DevExpress Reports easier and clear. Instead of using the Report Designer developer can do it directly in C# code.
+These extensions make the creating DevExpress Reports easier and clear. Instead of using the Report Designer developer can do it directly in C# code:
 
  ```csharp
- 
-  public partial class ReportData
-  {
-    public IList<ReportItem> Items { get; set; }
-  }
-
-  public class ReportItem
-  {
-    public int ID { get; set; }
-    public string Number { get; set; }
-    public string Name { get; set; }
-    public string Type { get; set; }
-    public string Location { get; set; }
-
-    public string ProjectManager { get; set; }
-
-    public DateTime? RecievedDate { get; set; }
-    public DateTime? CompletedDate { get; set; }
-
-    public decimal? Costs { get; set; }
-    public decimal? Profit { get; set; }
-  }
-    
   public XtraReport CreateReport(string title)
   {
     var report = new XtraReport();
@@ -63,5 +40,26 @@ These extensions make the creating DevExpress Reports easier and clear. Instead 
   private void DataSourceDemanded(object sender, EventArgs e)
   {
     ((XtraReport)sender).DataSource = logic.GetReportData();
+  }
+  public partial class ReportData
+  {
+    public IList<ReportItem> Items { get; set; }
+  }
+
+  public class ReportItem
+  {
+    public int ID { get; set; }
+    public string Number { get; set; }
+    public string Name { get; set; }
+    public string Type { get; set; }
+    public string Location { get; set; }
+
+    public string ProjectManager { get; set; }
+
+    public DateTime? RecievedDate { get; set; }
+    public DateTime? CompletedDate { get; set; }
+
+    public decimal? Costs { get; set; }
+    public decimal? Profit { get; set; }
   }
 ```
