@@ -62,7 +62,6 @@
     <Compile Include="DecorationHelpers\Bases\BaseReportHeaderHelper.cs" />
     <Compile Include="DecorationHelpers\Bases\BaseReportHelper.cs" />
     <Compile Include="DecorationHelpers\Calculations\PercentGroupCalculationHelper.cs" />
-    <Compile Include="DecorationHelpers\Calculations\PercentGroupCalculationTHelper.cs" />
     <Compile Include="DecorationHelpers\CombinedGridHelper.cs" />
     <Compile Include="DecorationHelpers\Defaults\GridHelper.cs" />
     <Compile Include="DecorationHelpers\Defaults\GroupFooterHelper.cs" />

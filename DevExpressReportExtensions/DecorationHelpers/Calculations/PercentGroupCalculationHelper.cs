@@ -6,40 +6,40 @@ namespace myClippit.DevExpress.Report.DecorationHelpers
 {
     public sealed class PercentGroupCalculationHelper : BaseGroupCalculationHelper
     {
-        private readonly string getNumerator;
+        private readonly string numeratorPropertyName;
 
-        private readonly string getDenominator;
+        private readonly string denominatorPropertyName;
 
-        private decimal numerator;
+        private decimal numeratorValues;
 
-        private decimal denominator;
+        private decimal denominatorValues;
 
         public PercentGroupCalculationHelper(XRLabel label,
-            string getNumerator,
-            string getDenominator)
+            string numeratorPropertyName,
+            string denominatorPropertyName)
             : base(label)
         {
-            this.getNumerator = getNumerator ?? throw new ArgumentNullException(nameof(getNumerator));
-            this.getDenominator = getDenominator ?? throw new ArgumentNullException(nameof(getDenominator));
+            this.numeratorPropertyName = numeratorPropertyName ?? throw new ArgumentNullException(nameof(numeratorPropertyName));
+            this.denominatorPropertyName = denominatorPropertyName ?? throw new ArgumentNullException(nameof(denominatorPropertyName));
         }
  
         protected override void Reset()
         {
-            this.numerator = 0;
-            this.denominator = 0;
+            this.numeratorValues = 0;
+            this.denominatorValues = 0;
         }
 
         protected override void AddObject()
         {
-            this.numerator += this.RootReport.GetCurrentColumnValue<decimal>(this.getNumerator);
-            this.denominator += this.RootReport.GetCurrentColumnValue<decimal>(this.getDenominator);
+            this.numeratorValues += this.RootReport.GetCurrentColumnValue<decimal>(this.numeratorPropertyName);
+            this.denominatorValues += this.RootReport.GetCurrentColumnValue<decimal>(this.denominatorPropertyName);
         }
 
         protected override object GetResult()
         {
-            if (this.denominator != 0)
+            if (this.denominatorValues != 0)
             {
-                return this.numerator / this.denominator;
+                return this.numeratorValues / this.denominatorValues;
             }
             else
             {
