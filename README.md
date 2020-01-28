@@ -1,100 +1,154 @@
 These extensions make the creating DevExpress Reports easier and clear. Instead of using the Report Designer developer can do it directly in C# code:
 
- ```csharp
-  public XtraReport CreateReport(string title)
-  {
-    var report = new XtraReport();
-    
-    report.InitializeDataMember(nameof(ReportData.Items));
-
-    report.AddReportHeader(title);
-
-    report.AddCombinedGrid()
-      .AddColumn(1D, "Number", nameof(ReportItem.Number))
-      .AddColumn(2.5D, "Name", nameof(ReportItem.Name))
-      .AddColumn(1.25D, "Manager", nameof(ReportItem.ProjectManager), BorderSide.Right)
-      .AddColumnDate(0.75D, "Recieved", nameof(ReportItem.RecievedDate))
-      .AddColumnDate(0.75D, "Completed", nameof(ReportItem.CompletedDate))
-      .AddColumnMoney(0.75D, "Cost", nameof(myRepoReportItemrtData.Costs), BorderSide.Left)
-      .AddColumnMoney(0.75D, "Profit", nameof(ReportItem.Profit));
-
-    report.AddGroupHeader(nameof(ReportItem.Location))
-      .AdjustBorderStyleFromDetail();
-    
-    report.AddGroupHeader(nameof(ReportItem.Type));
-
-    report.AddGroupFooter().AdjustBorderStyleFromDetail()
-      .AddColumnCount(7D)
-      .AddColumnMoney(0.75D, nameof(ReportItem.Costs), BorderSide.Left)
-      .AddColumnMoney(0.75D, nameof(ReportItem.Profit));
-     
-    report.AddPageNumber();
-    
-    report.DataSourceDemanded += DataSourceDemanded;
-    
-    return report;
-  }
-  
-  private void DataSourceDemanded(object sender, EventArgs e)
-  {
-    ((XtraReport)sender).DataSource = GetReportData();
-  }
-  
-  public partial class ReportData
-  {
-    public IList<ReportItem> Items { get; set; }
-  }
-
-  public class ReportItem
-  {
-    public int ID { get; set; }
-    public string Number { get; set; }
-    public string Name { get; set; }
-    public string Type { get; set; }
-    public string Location { get; set; }
-
-    public string ProjectManager { get; set; }
-
-    public DateTime? RecievedDate { get; set; }
-    public DateTime? CompletedDate { get; set; }
-
-    public decimal? Costs { get; set; }
-    public decimal? Profit { get; set; }
-  }
-  
-  private ReportData GetReportData()
-  {
-    return new ReportData()
+```csharp
+    public class Person
     {
-      Items = new List<ReportItem>()
-      {
-        new ReportItem
-        {
-          ID  = 1,
-          Number  = "Num1",
-          Name = "Name1",
-          JobType = "Type1",
-          JobLocation = "Location1",
-          ProjectManager = "Persona",
-          RecievedDate = DateTime.Today.AddMonths(-2),
-          CompletedDate = DateTime.Today.AddDays(-10),
-          Costs  = 11,
-          Profit  = 133
-        },
-        new ReportItem
-        {
-          ID  = 222,
-          Number  = "Num2",
-          Name = "Name2",
-          Type = "Type1",
-          Location = "Location2",
-          ProjectManager = "Persona",
-          RecievedDate = DateTime.Today.AddMonths(-3),
-          CompletedDate = DateTime.Today.AddDays(-30),
-          Costs  = 14,
-          Profit  = 13,
-        }
-      };
+        public int ID { get; set; }
+        public string Number { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Type { get; set; }
+        public string Department { get; set; }
+        public string Manager { get; set; }
+        public DateTime EmploymentDate { get; set; }
+        public DateTime? DismissalDate { get; set; }
+        public decimal? Salary { get; set; }
     }
-  }
+```
+
+```csharp
+    public partial class SimulatedReportData
+    {
+        public IList<Person> Persons { get; set; }
+
+        public static SimulatedReportData GetData(DateTime? dateFrom, DateTime? dateTo)
+        {
+            var date = new DateTime(DateTime.Today.Year - 1, 1, 1);
+            return new SimulatedReportData
+            {
+                Persons = new List<Person>()
+                {
+                    new Person
+                    {
+                      ID = 1,
+                      Number = "OW-2134",
+                      FirstName = "Paul",
+                      LastName = "Daker",
+                      Type = "Electric",
+                      Department = "Support",
+                      Manager = "Mia Coty",
+                      EmploymentDate = date.AddMonths(6).AddDays(3),
+                      DismissalDate = date.AddMonths(10).AddDays(11),
+                      Salary = 1234,
+                    },
+                    new Person
+                    {
+                      ID = 2,
+                      Number = "OW-2137",
+                      FirstName = "Devon",
+                      LastName = "Curokasu",
+                      Type = "Secretary",
+                      Department = "Reception",
+                      Manager = "Mia Coty",
+                      EmploymentDate = date.AddMonths(5).AddDays(7),
+                      DismissalDate = date.AddMonths(8).AddDays(17),
+                      Salary = 4321,
+                    },
+                    new Person
+                    {
+                      ID = 3,
+                      Number = "OW-2041",
+                      FirstName = "Claris",
+                      LastName = "Manole",
+                      Type = "Secretary",
+                      Department = "Reception",
+                      Manager = "Mia Coty",
+                      EmploymentDate = date.AddMonths(2).AddDays(8),
+                      DismissalDate = null,
+                      Salary = 5445,
+                    },
+                    new Person
+                    {
+                      ID = 4,
+                      Number = "OW-3261",
+                      FirstName = "Mia",
+                      LastName = "Coty",
+                      Type = "Manager",
+                      Department = "Reception",
+                      Manager = null,
+                      EmploymentDate = date.AddMonths(1).AddDays(8),
+                      DismissalDate = null,
+                      Salary = 1234,
+                    }
+                }
+                .Where(c => c.EmploymentDate >= dateFrom && c.EmploymentDate <= dateTo)
+                .ToList()
+            };
+        }
+    }
+```
+
+ ```csharp
+    [System.ComponentModel.DesignerCategory("Code")]
+    public class DefaultReportGenerator : DevExpress.XtraReports.UI.XtraReport
+    {
+        public DefaultReportGenerator()
+        {
+            this.BeginUpdate();
+
+            // initialize report structure
+            this.InitializeStructure(false);
+            this.InitializeDataMember(nameof(SimulatedReportData.Persons));
+
+            // initialize report parameters
+            this.InitializeParameters();
+
+            // initialize decorations
+            this.InitializeDecorations();
+
+            this.EndUpdate();
+        }
+
+        // define parameters
+        private Parameter dateFromParam;
+        private Parameter dateToParam;
+
+        private void InitializeParameters()
+        {
+            // setup parameters
+            this.dateFromParam = this.CreateParameter("From")
+                .SetCalendarWithTime(new DateTime(2000, 01, 01));
+
+            this.dateToParam = this.CreateParameter("To")
+                .SetCalendarWithTime(DateTime.Today);
+        }
+
+        private void InitializeDecorations()
+        {
+            this.AddReportHeader();
+
+            this.AddCombinedGrid()
+                .AddColumn(1D, "Number", nameof(Person.Number))
+                .AddColumn(1.5D, "First Name", nameof(Person.FirstName))
+                .AddColumn(1.5D, "Last Name", nameof(Person.LastName))
+                .AddColumn(1.5D, "Type", nameof(Person.Type))
+                .AddColumn(1.5D, "Department", nameof(Person.Department))
+                .AddColumn(2.5D, "Manager", nameof(Person.Manager))
+                .AddColumnDate(1D, "Started", nameof(Person.EmploymentDate))
+                .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
+                .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
+
+            this.AddPageNumber();
+        }
+
+        protected override void OnDataSourceDemanded(EventArgs e)
+        {
+            base.OnDataSourceDemanded(e);
+
+            this.DataSource = SimulatedReportData.GetData(
+                this.dateFromParam.GetValue<DateTime>(),
+                this.dateToParam.GetValue<DateTime>());
+        }
+
+    }
 ```
