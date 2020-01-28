@@ -191,6 +191,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\SimulatedReportData.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Reports\DefaultReportGenerator.cs" />
     <Compile Include="Reports\XtraReport1.cs">
       <SubType>Component</SubType>
@@ -205,9 +207,7 @@
       <DependentUpon>XtraReport2.cs</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\XtraReport1.resx">

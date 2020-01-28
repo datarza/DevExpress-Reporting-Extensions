@@ -5,6 +5,7 @@ using DevExpress.XtraReports.Parameters;
 using DevExpress.XtraReports.UI;
 using myClippit.DevExpress.Report.Extensions;
 using DevExpress.XtraPrinting;
+using DemoWebApplication.Models;
 
 namespace DemoWebApplication.Reports
 {
@@ -17,6 +18,7 @@ namespace DemoWebApplication.Reports
 
             // initialize report structure
             this.InitializeStructure(false);
+            this.InitializeDataMember(nameof(SimulatedReportData.Persons));
 
             // initialize report parameters
             this.InitializeParameters();
@@ -33,44 +35,40 @@ namespace DemoWebApplication.Reports
 
         private void InitializeParameters()
         {
-            // setup parameters
             this.dateFromParam = this.CreateParameter("From")
-                .SetCalendarWithTime(DateTime.Today.AddMonths(-6).AddTicks(1));
+                .SetCalendarWithTime(new DateTime(2000, 01, 01));
 
             this.dateToParam = this.CreateParameter("To")
-                .SetCalendarWithTime(DateTime.Today.AddDays(1).AddTicks(-1));
-
+                .SetCalendarWithTime(DateTime.Today);
         }
 
+        // define decorations
         private void InitializeDecorations()
         {
             this.AddReportHeader();
 
             this.AddCombinedGrid()
-                .AddColumn(2D, "Name", "name")
-                .AddColumnNumber(3D, "First", "n1", BorderSide.Left | BorderSide.Right)
-                .AddColumnNumber(3D, "Second", "n2");
+                .AddColumn(1D, "Number", nameof(Person.Number))
+                .AddColumn(1.5D, "First Name", nameof(Person.FirstName))
+                .AddColumn(1.5D, "Last Name", nameof(Person.LastName))
+                .AddColumn(1.5D, "Type", nameof(Person.Type))
+                .AddColumn(1.5D, "Department", nameof(Person.Department))
+                .AddColumn(2.5D, "Manager", nameof(Person.Manager))
+                .AddColumnDate(1D, "Started", nameof(Person.EmploymentDate))
+                .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
+                .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
 
             this.AddPageNumber();
         }
 
+        // select data based on parameters
         protected override void OnDataSourceDemanded(EventArgs e)
         {
             base.OnDataSourceDemanded(e);
 
-            this.DataSource = this.GetData(
+            this.DataSource = SimulatedReportData.GetData(
                 this.dateFromParam.GetValue<DateTime>(),
                 this.dateToParam.GetValue<DateTime>());
-        }
-
-        protected IEnumerable<object> GetData(DateTime fromDate, DateTime toDate)
-        {
-            return new List<object>
-            {
-                new { name = "name1", n1 = 11, n2 = 33 },
-                new { name = "name2", n1 = 22, n2 = 44 },
-                new { name = "name3", n1 = 33, n2 = 55 },
-            };
         }
 
     }
