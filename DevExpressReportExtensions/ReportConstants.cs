@@ -2,9 +2,9 @@
 
 using System.Drawing.Printing;
 
-namespace DevExpressReportExtensions
+namespace myClippit.DevExpress.Report
 {
-    public static class ReportConstants
+    internal static class ReportConstants
     {
         internal static class Page
         {
