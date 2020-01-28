@@ -55,6 +55,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DecorationHelpers\Bases\BaseDetailReportHelper.cs" />
+    <Compile Include="DecorationHelpers\Bases\BaseGroupCalculationHelper.cs" />
+    <Compile Include="DecorationHelpers\Bases\BaseMasterReportHelper.cs" />
+    <Compile Include="DecorationHelpers\Bases\BaseReportFooterHelper.cs" />
+    <Compile Include="DecorationHelpers\Bases\BaseReportHeaderHelper.cs" />
+    <Compile Include="DecorationHelpers\Bases\BaseReportHelper.cs" />
+    <Compile Include="DecorationHelpers\Calculations\PercentGroupCalculationHelper.cs" />
+    <Compile Include="DecorationHelpers\Calculations\PercentGroupCalculationTHelper.cs" />
+    <Compile Include="DecorationHelpers\CombinedGridHelper.cs" />
+    <Compile Include="DecorationHelpers\Defaults\GridHelper.cs" />
+    <Compile Include="DecorationHelpers\Defaults\GroupFooterHelper.cs" />
+    <Compile Include="DecorationHelpers\Defaults\GroupHeaderHelper.cs" />
+    <Compile Include="DecorationHelpers\Defaults\MasterReportHelper.cs" />
+    <Compile Include="DecorationHelpers\Defaults\PageHeaderHelper.cs" />
+    <Compile Include="DecorationHelpers\Defaults\PageNumberHelper.cs" />
+    <Compile Include="DecorationHelpers\Defaults\ReportHeaderHelper.cs" />
+    <Compile Include="Extensions\Decorations\DecorationExtensions.Grids.cs" />
+    <Compile Include="Extensions\Decorations\DecorationExtensions.Groups.cs" />
+    <Compile Include="Extensions\Decorations\DecorationExtensions.PageHeaders.cs" />
+    <Compile Include="Extensions\Decorations\DecorationExtensions.PageNumbers.cs" />
+    <Compile Include="Extensions\Decorations\DecorationExtensions.ReportHeaders.cs" />
+    <Compile Include="Extensions\Decorations\DecorationExtensions.Reports.cs" />
     <Compile Include="Extensions\Parameters\ParameterExtensions.cs" />
     <Compile Include="Extensions\Parameters\ParameterExtensions.GetValues.cs" />
     <Compile Include="Extensions\Reports\DataExtensions.cs" />

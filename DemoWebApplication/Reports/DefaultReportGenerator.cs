@@ -43,15 +43,12 @@ namespace DemoWebApplication.Reports
 
         private void InitializeDecorations()
         {
-            var band = new DetailBand()
-            {
-                HeightF = 0F
-            };
-            this.Bands.Add(band);
+            this.AddReportHeader();
 
-            var label = new XRLabel();
-            label.DataBindings.Add(new XRBinding(nameof(label.Text), null, "ddd"));
-            band.Controls.Add(label);
+            this.AddCombinedGrid()
+                .AddColumn(2.5D, "Name", "name");
+
+            this.AddPageNumber();
         }
 
         protected override void OnDataSourceDemanded(EventArgs e)
@@ -67,9 +64,9 @@ namespace DemoWebApplication.Reports
         {
             return new List<object>
             {
-                new { ddd = 333 },
-                new { ddd = 44 },
-                new { ddd = 55 },
+                new { name = 333 },
+                new { name = 44 },
+                new { name = 55 },
             };
         }
 
