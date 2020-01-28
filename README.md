@@ -23,7 +23,6 @@ These extensions make the creating DevExpress Reports easier and clear. Instead 
 
         private void InitializeParameters()
         {
-            // setup parameters
             this.dateFromParam = this.CreateParameter("From")
                 .SetCalendarWithTime(new DateTime(2000, 01, 01));
 
