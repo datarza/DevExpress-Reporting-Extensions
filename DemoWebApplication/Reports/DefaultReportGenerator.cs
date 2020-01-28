@@ -1,65 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
+using DevExpress.XtraReports.Parameters;
+using DevExpress.XtraReports.UI;
+using myClippit.DevExpress.Report.Extensions;
 
 namespace DemoWebApplication.Reports
 {
     [System.ComponentModel.DesignerCategory("Code")]
     public class DefaultReportGenerator : DevExpress.XtraReports.UI.XtraReport
     {
-        private DevExpress.XtraReports.UI.TopMarginBand topMarginBand1;
-        private DevExpress.XtraReports.UI.DetailBand detailBand1;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel1;
-        private DevExpress.XtraReports.UI.BottomMarginBand bottomMarginBand1;
-
         public DefaultReportGenerator()
         {
-            InitializeComponent();
+            this.BeginUpdate();
+
+            // initialize report structure
+            this.InitializeStructure(false);
+
+            // initialize report parameters
+            this.InitializeParameters();
+
+            // initialize decorations
+            this.InitializeDecorations();
+
+            this.EndUpdate();
         }
 
-        private void InitializeComponent()
+        // define parameters
+        private Parameter dateFromParam;
+        private Parameter dateToParam;
+
+        private void InitializeParameters()
         {
-            this.topMarginBand1 = new DevExpress.XtraReports.UI.TopMarginBand();
-            this.detailBand1 = new DevExpress.XtraReports.UI.DetailBand();
-            this.bottomMarginBand1 = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-            // 
-            // topMarginBand1
-            // 
-            this.topMarginBand1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel1});
-            this.topMarginBand1.HeightF = 38.54167F;
-            this.topMarginBand1.Name = "topMarginBand1";
-            // 
-            // detailBand1
-            // 
-            this.detailBand1.Name = "detailBand1";
-            // 
-            // bottomMarginBand1
-            // 
-            this.bottomMarginBand1.Name = "bottomMarginBand1";
-            // 
-            // xrLabel1
-            // 
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 10.00001F);
-            this.xrLabel1.Multiline = true;
-            this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(100F, 23F);
-            this.xrLabel1.Text = "Report Header";
-            // 
-            // DefaultReportGenerator
-            // 
-            this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
-            this.topMarginBand1,
-            this.detailBand1,
-            this.bottomMarginBand1});
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 39, 100);
-            this.Version = "19.2";
-            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            // setup parameters
+            this.dateFromParam = this.CreateParameter("From")
+                .SetCalendarWithTime(DateTime.Today.AddMonths(-6).AddTicks(1));
+
+            this.dateToParam = this.CreateParameter("To")
+                .SetCalendarWithTime(DateTime.Today.AddDays(1).AddTicks(-1));
 
         }
+
+        private void InitializeDecorations()
+        {
+            var band = new DetailBand()
+            {
+                HeightF = 0F
+            };
+            this.Bands.Add(band);
+
+            var label = new XRLabel();
+            label.DataBindings.Add(new XRBinding(nameof(label.Text), null, "ddd"));
+            band.Controls.Add(label);
+        }
+
+        protected override void OnDataSourceDemanded(EventArgs e)
+        {
+            base.OnDataSourceDemanded(e);
+
+            this.DataSource = this.GetData(
+                this.dateFromParam.GetValue<DateTime>(),
+                this.dateToParam.GetValue<DateTime>());
+        }
+
+        protected IEnumerable<object> GetData(DateTime fromDate, DateTime toDate)
+        {
+            return new List<object>
+            {
+                new { ddd = 333 },
+                new { ddd = 44 },
+                new { ddd = 55 },
+            };
+        }
+
     }
 }
