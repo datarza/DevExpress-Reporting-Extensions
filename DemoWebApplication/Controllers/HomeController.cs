@@ -27,12 +27,12 @@ namespace DemoWebApplication.Controllers
                 }
                 catch
                 {
-                    report = new XtraReport1();
+                    report = new DefaultReportGenerator();
                 }
             }
             else
             {
-                report = new XtraReport1();
+                report = new DefaultReportGenerator();
             }
             return View(report);
         }
