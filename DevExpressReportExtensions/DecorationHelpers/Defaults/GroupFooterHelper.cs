@@ -208,28 +208,7 @@ namespace myClippit.DevExpress.Report.DecorationHelpers
 
             return this;
         }
-
-        public DefaultGroupFooterHelper AddColumnPercent<T>(
-            double weight,
-            string dataMember,
-            Func<T, decimal?> getVariation,
-            Func<T, decimal?> getDenominator,
-            BorderSide? border = null,
-            TextAlignment? alignment = null)
-        {
-            var cell = this.ContainerControl.AddCell(weight);
-
-            var binding = cell.AddTextBinding(this.BaseReport.JoinWithDataMember(dataMember));
-
-            cell.SetFormatPercent(null, border, alignment);
-
-            cell.Summary = this.CreateSummary(SummaryFunc.Custom, binding.FormatString);
-
-            new PercentGroupCalculationHelper<T>(cell, getVariation, getDenominator);
-
-            return this;
-        }
-
+        
         public DefaultGroupFooterHelper AddColumnPercent(
             double weight,
             string dataMember,

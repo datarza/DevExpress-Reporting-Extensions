@@ -82,8 +82,7 @@ namespace myClippit.DevExpress.Report.DecorationHelpers
 
             return this;
         }
-
-
+        
         public CombinedGridHelper AddColumnNumber(
             double weight,
             string text,

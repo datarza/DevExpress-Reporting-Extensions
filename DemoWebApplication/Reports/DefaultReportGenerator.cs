@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DevExpress.XtraReports.Parameters;
 using DevExpress.XtraReports.UI;
 using myClippit.DevExpress.Report.Extensions;
+using DevExpress.XtraPrinting;
 
 namespace DemoWebApplication.Reports
 {
@@ -46,7 +47,9 @@ namespace DemoWebApplication.Reports
             this.AddReportHeader();
 
             this.AddCombinedGrid()
-                .AddColumn(2.5D, "Name", "name");
+                .AddColumn(2D, "Name", "name")
+                .AddColumnNumber(3D, "First", "n1", BorderSide.Left | BorderSide.Right)
+                .AddColumnNumber(3D, "Second", "n2");
 
             this.AddPageNumber();
         }
@@ -64,9 +67,9 @@ namespace DemoWebApplication.Reports
         {
             return new List<object>
             {
-                new { name = 333 },
-                new { name = 44 },
-                new { name = 55 },
+                new { name = "name1", n1 = 11, n2 = 33 },
+                new { name = "name2", n1 = 22, n2 = 44 },
+                new { name = "name3", n1 = 33, n2 = 55 },
             };
         }
 
