@@ -6,8 +6,6 @@ These extensions make the creating DevExpress Reports easier and clear. Instead 
     {
         public DefaultReportGenerator()
         {
-            this.BeginUpdate();
-
             // initialize report structure
             this.InitializeStructure(false);
             this.InitializeDataMember(nameof(SimulatedReportData.Persons));
@@ -17,8 +15,6 @@ These extensions make the creating DevExpress Reports easier and clear. Instead 
 
             // initialize decorations
             this.InitializeDecorations();
-
-            this.EndUpdate();
         }
 
         // define parameters
@@ -35,6 +31,7 @@ These extensions make the creating DevExpress Reports easier and clear. Instead 
                 .SetCalendarWithTime(DateTime.Today);
         }
 
+        // define decorations
         private void InitializeDecorations()
         {
             this.AddReportHeader();
@@ -53,6 +50,7 @@ These extensions make the creating DevExpress Reports easier and clear. Instead 
             this.AddPageNumber();
         }
 
+        // select data based on parameters
         protected override void OnDataSourceDemanded(EventArgs e)
         {
             base.OnDataSourceDemanded(e);
