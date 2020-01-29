@@ -28,3 +28,6 @@ report.DataSource = new List<Person>() {
   ... 
 };
 ```
+
+The result looks like:
+![Report Example](reportexample.png)
