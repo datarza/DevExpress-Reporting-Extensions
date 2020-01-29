@@ -2,7 +2,7 @@ I often use [DevExpress Reports](https://www.devexpress.com/subscriptions/report
 
 That's why I created extensions, that make report development with the DevExpress library easier and more intuitive. Instead of using the Designer, developer can do it directly in C# code.
 
-The simple example:
+The simplest example demonstrates the main approach:
 
  ```csharp
 var report = new DevExpress.XtraReports.UI.XtraReport();
