@@ -23,7 +23,7 @@ report.AddGrid()
 report.AddPageNumber();
 
 report.DataSource = new List<Person>() { 
-  new Person { ID = 1, Number = "num1", FirstName = ... },
-  new Person { ID = 2, Number = ... } ... 
+  new Person { Number = 1, FirstName = ... },
+  new Person { Number = 2, ... } ... 
 };
 ```
