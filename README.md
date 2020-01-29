@@ -4,9 +4,9 @@ That's why I created extensions, that make report development with the DevExpres
 
  ```csharp
 [System.ComponentModel.DesignerCategory("Code")]
-public class DefaultReportGenerator : DevExpress.XtraReports.UI.XtraReport
+public class MyCodeReport : DevExpress.XtraReports.UI.XtraReport
 {
-    public DefaultReportGenerator()
+    public MyCodeReport()
     {
         // initialize report structure
         this.InitializeStructure(false);
