@@ -32,8 +32,8 @@ report.DataSource = new List<Person>() {
 The result looks like:
 ![Report Example](reportexample.png)
 
-Please, read the Wiki pages for detail information.
+#### Support or Contact
 
-## Support or Contact
+Please, read the [Wiki](../../wiki) pages for detail information.
 
 Having questions? [Contact me](https://github.com/CanadianBeaver) and I will help you sort it out.
