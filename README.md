@@ -2,7 +2,7 @@ I often use [DevExpress Reports](https://www.devexpress.com/subscriptions/report
 
 That's why I created extensions, that make report development with the DevExpress library easier and more intuitive. Instead of using the Designer, developer can do it directly in C# code.
 
-#### How does it work
+#### How does it work?
 
 The simplest example demonstrates the main approach:
 
@@ -33,6 +33,10 @@ report.DataSource = new List<Person>() {
 
 The result looks like:
 ![Report Example](reportexample.png)
+
+#### What else is inside?
+
+In addition to building grids, extensions contain many features that allows to create headers and footers, groups and additional calculations for summaries,  page numbering and nested Master-Detail reports. These extensions can be easily expanded.
 
 #### Support or Contact
 
