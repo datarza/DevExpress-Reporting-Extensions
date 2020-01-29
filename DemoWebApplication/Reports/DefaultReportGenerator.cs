@@ -17,7 +17,7 @@ namespace DemoWebApplication.Reports
             this.BeginUpdate();
 
             // initialize report structure
-            this.InitializeStructure(false);
+            this.InitializeStructure();
             this.InitializeDataMember(nameof(SimulatedReportData.Persons));
 
             // initialize report parameters

@@ -1,33 +1,34 @@
-﻿using DevExpress.XtraPrinting;
+﻿using System.Drawing.Printing;
 
-using System.Drawing.Printing;
+using DevExpress.XtraPrinting;
+using DevExpress.XtraReports.UI;
 
 namespace myClippit.DevExpress.Report
 {
-    internal static class ReportConstants
+    public static class ReportConstants
     {
-        internal static class Page
+        public static class Page
         {
-            public const bool IsLandscape = true;
-            public const PaperKind Paper = PaperKind.Letter;
-            public const int HorizontalMargin = 50;
-            public const int VerticalMargin = 50;
+            public static bool IsLandscape = false;
+            public static PaperKind Paper = XtraReport.DefaultPaperKind;
+            public static int HorizontalMargin = 50;
+            public static int VerticalMargin = 50;
         }
 
-        internal static class FormatStrings
+        public static class FormatStrings
         {
-            public const string Date = "{0:d}";
-            public const string DateTime = "{0:g}";
-            public const string Count = "Total count: {0:D}";
-            public const string Number = "{0:N}";
-            public const string Money = "{0:C}";
-            public const string Percent = "{0:P}";
+            public static string Date = "{0:d}";
+            public static string DateTime = "{0:g}";
+            public static string Count = "Total count: {0:D}";
+            public static string Number = "{0:N}";
+            public static string Money = "{0:C}";
+            public static string Percent = "{0:P}";
         }
 
-        internal static class PageNumbers
+        public static class PageNumbers
         {
-            public const TextAlignment Alignment = TextAlignment.TopRight;
-            public const string FormatString = "Page {0} of {1}";
+            public static TextAlignment Alignment = TextAlignment.TopRight;
+            public static string FormatString = "Page {0} of {1}";
         }
 
     }
