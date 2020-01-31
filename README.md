@@ -23,8 +23,8 @@ report
 
 report.DataSource = new List<Person>() { 
   new Person { Number = "OW-2134", FirstName = "Paul", LastName = "Daker", ... },
-  new Person { Number = "OW-2137", FirstName = "Devon", ... },
-  new Person { Number = "OW-2041", FirstName = "Claris", ... } 
+  new Person { Number = "OW-2137", FirstName = "Devon", LastName = "Curokasu", ... },
+  new Person { Number = "OW-2041", FirstName = "Claris", LastName = "Manole", ... }, 
   ... 
 };
 ```
