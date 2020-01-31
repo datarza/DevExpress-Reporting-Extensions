@@ -46,14 +46,14 @@ namespace myClippit.DevExpress.Report.DecorationHelpers
             this.RootReport.StyleSheet.Add(new XRControlStyle()
             {
                 Name = styleName,
-                ForeColor = Color.Black,
+                ForeColor = Color.DimGray,
                 BackColor = Color.Transparent,
                 BorderColor = Color.LightGray,
                 //Borders = BorderSide.Bottom,
                 //BorderWidth = 0.5F,
                 //BorderDashStyle = BorderDashStyle.DashDot,
                 Padding = new PaddingInfo(2, 2, 1, 1),
-                Font = new Font(FontFamily.GenericSansSerif, 0.09F, FontStyle.Regular, GraphicsUnit.Inch),
+                Font = new Font(FontFamily.GenericSansSerif, 0.09F, FontStyle.Bold, GraphicsUnit.Inch),
                 TextAlignment = TextAlignment.MiddleLeft,
             });
             return styleName;

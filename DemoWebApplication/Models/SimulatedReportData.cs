@@ -70,7 +70,10 @@ namespace DemoWebApplication.Models
                       Salary = 1234,
                     }
                 }
-                .Where(c => c.EmploymentDate >= dateFrom && c.EmploymentDate <= dateTo)
+                .Where(c => dateFrom.HasValue && c.EmploymentDate >= dateFrom && dateTo.HasValue && c.EmploymentDate <= dateTo ||
+                            dateFrom.HasValue && c.EmploymentDate >= dateFrom && !dateTo.HasValue ||
+                            !dateFrom.HasValue && dateTo.HasValue && c.EmploymentDate <= dateTo ||
+                            !dateFrom.HasValue && !dateTo.HasValue)
                 .ToList()
             };
         }

@@ -61,7 +61,7 @@ namespace myClippit.DevExpress.Report.DecorationHelpers
             this.RootReport.StyleSheet.Add(new XRControlStyle()
             {
                 Name = styleName,
-                ForeColor = level % 2 == 0 ? Color.Coral : Color.SteelBlue,
+                ForeColor = Color.DimGray,
                 BackColor = Color.Transparent,
                 //BorderColor = Color.LightGray,
                 //Borders = BorderSide.Bottom,

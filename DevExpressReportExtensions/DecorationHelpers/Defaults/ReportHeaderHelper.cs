@@ -10,37 +10,36 @@ namespace myClippit.DevExpress.Report.DecorationHelpers
 {
     public class DefaultReportHeaderHelper : BaseReportHeaderHelper
     {
-        public readonly XRLabel PrintTimeLabel;
+        public readonly XRLabel HeaderLabel;
 
-        public DefaultReportHeaderHelper(XtraReport report, XtraReportBase detailReport = null)
+        public DefaultReportHeaderHelper(XtraReport report, string headerText)
+            : this(report, null, headerText)
+        {
+        }
+
+        public DefaultReportHeaderHelper(XtraReport report, XtraReportBase detailReport, string headerText)
             : base(report, detailReport)
         {
-            this.PrintTimeLabel = this.CreateContainerControls();
+            this.HeaderLabel = this.CreateContainerControls(headerText);
         }
-        
-        protected virtual XRLabel CreateContainerControls()
+
+        protected virtual XRLabel CreateContainerControls(string headerText)
         {
-            var titleLabel = new XRLabel()
+            var headerLabel = new XRLabel()
             {
                 AnchorHorizontal = HorizontalAnchorStyles.Both,
-                BoundsF = new RectangleF(this.RootReport.GetBandWidth() / 2F, 0F, this.RootReport.GetBandWidth() / 2F, 0F),
+                BoundsF = new RectangleF(0F, 0F, this.RootReport.GetBandWidth(), 0F),
                 CanGrow = true,
                 CanShrink = true,
-                Padding = new PaddingInfo(2, 2, 0, 0),
-                Font = new Font(FontFamily.GenericSansSerif, 0.18F, FontStyle.Regular, GraphicsUnit.Inch),
-                TextAlignment = TextAlignment.MiddleRight,
-                ForeColor = Color.Gray
+                Padding = new PaddingInfo(2, 2, 0, 8),
+                Font = new Font(FontFamily.GenericSansSerif, 0.2F, FontStyle.Regular, GraphicsUnit.Inch),
+                TextAlignment = TextAlignment.MiddleLeft,
+                ForeColor = Color.Gray,
+                Text = headerText
             };
-            this.ContainerBand.Controls.Add(titleLabel);
+            this.ContainerBand.Controls.Add(headerLabel);
 
-            titleLabel.PrintOnPage += TitleLabel_PrintOnPage;
-
-            return titleLabel;
-        }
-        
-        private void TitleLabel_PrintOnPage(object sender, PrintOnPageEventArgs e)
-        {
-            ((XRControl)sender).Text = DateTime.Now.ToString("f");
+            return headerLabel;
         }
 
     }

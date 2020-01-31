@@ -6,15 +6,16 @@ namespace myClippit.DevExpress.Report.Extensions
 {
     public static partial class DecorationExtensions
     {
-        public static DefaultReportHeaderHelper AddReportHeader(this XtraReport report)
+        public static DefaultReportHeaderHelper AddReportHeader(this XtraReport report, string headerText)
         {
-            return new DefaultReportHeaderHelper(report);
+            return new DefaultReportHeaderHelper(report, headerText);
         }
 
         public static DefaultReportHeaderHelper AddReportHeader(this XtraReport report, 
-            XtraReportBase detailReport)
+            XtraReportBase detailReport, 
+            string headerText)
         {
-            return new DefaultReportHeaderHelper(report, detailReport);
+            return new DefaultReportHeaderHelper(report, detailReport, headerText);
         }
 
     }

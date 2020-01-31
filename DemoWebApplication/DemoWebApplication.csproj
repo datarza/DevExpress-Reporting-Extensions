@@ -193,29 +193,13 @@
     </Compile>
     <Compile Include="Models\SimulatedReportData.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Reports\ParamsReportGenerator.cs" />
+    <Compile Include="Reports\GroupsReportGenerator.cs" />
     <Compile Include="Reports\DefaultReportGenerator.cs" />
-    <Compile Include="Reports\XtraReport1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\XtraReport1.Designer.cs">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\XtraReport2.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\XtraReport2.Designer.cs">
-      <DependentUpon>XtraReport2.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="Reports\XtraReport1.resx">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\XtraReport2.resx">
-      <DependentUpon>XtraReport2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevExpressReportExtensions\DevExpressReportExtensions.csproj">
