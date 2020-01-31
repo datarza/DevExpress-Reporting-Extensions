@@ -25,6 +25,7 @@ report.DataSource = new List<Person>() {
   new Person { Number = "OW-2134", FirstName = "Paul", LastName = "Daker", ... },
   new Person { Number = "OW-2137", FirstName = "Devon", LastName = "Curokasu", ... },
   new Person { Number = "OW-2041", FirstName = "Claris", LastName = "Manole", ... }, 
+  new Person { Number = "OW-3261", FirstName = "Mia", LastName = "Coty", ... }, 
   ... 
 };
 ```
