@@ -43,6 +43,6 @@ DevExpress Report Extensions contain features, that allows to create headers and
 
 #### Support or Contact
 
-Please, read the [Wiki](../../wiki) pages for detail information.
+Please, read the [Wiki](../../wiki) pages for detail information. Also, DemoWebApplication contains many usefull examples.
 
 Having questions? [Contact me](https://github.com/CanadianBeaver) and I will help you sort it out.
