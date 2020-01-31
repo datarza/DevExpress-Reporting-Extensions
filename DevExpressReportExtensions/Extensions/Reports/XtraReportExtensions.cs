@@ -19,8 +19,6 @@ namespace myClippit.DevExpress.Report.Extensions
 
             report.PaperKind = paper ?? ReportConstants.Page.Paper;
 
-            report.PrintingSystem.Document.AutoFitToPagesWidth = 1;
-
             report.Margins = margins ?? new Margins(
                 ReportConstants.Page.HorizontalMargin, ReportConstants.Page.HorizontalMargin,
                 ReportConstants.Page.VerticalMargin, ReportConstants.Page.VerticalMargin);

@@ -14,8 +14,6 @@ namespace DemoWebApplication.Reports
     {
         public DefaultReportGenerator()
         {
-            this.BeginUpdate();
-
             // initialize report structure
             this.InitializeStructure();
             this.InitializeDataMember(nameof(SimulatedReportData.Persons));
@@ -25,8 +23,6 @@ namespace DemoWebApplication.Reports
 
             // initialize decorations
             this.InitializeDecorations();
-
-            this.EndUpdate();
         }
 
         // define parameters
