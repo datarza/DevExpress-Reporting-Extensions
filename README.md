@@ -9,8 +9,6 @@ The simplest example demonstrates the main approach:
  ```csharp
 var report = new DevExpress.XtraReports.UI.XtraReport();
 
-report.AddReportHeader();
-
 report.AddGrid()
   .AddColumn(1D, "Number", nameof(Person.Number))
   .AddColumn(1.5D, "First Name", nameof(Person.FirstName))
@@ -21,8 +19,6 @@ report.AddGrid()
   .AddColumnDate(1D, "Started", nameof(Person.EmploymentDate))
   .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
   .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
-
-report.AddPageNumber();
 
 report.DataSource = new List<Person>() { 
   new Person { Number = "OW-2134", FirstName = "Paul", LastName = "Daker", ... },
@@ -36,7 +32,7 @@ The result looks like:
 
 #### What else is inside?
 
-In addition to building grids, extensions contain many features that allows to create headers and footers, groups and additional calculations for summaries,  page numbering and nested Master-Detail reports. These extensions can be easily expanded.
+DevExpress Report Extensions contain features, that allows to create headers and footers, groups and additional calculations for summaries, grids and column headers, page numbering and nested Master-Detail reports. These extensions can be easily expanded with different styles and design.
 
 #### Support or Contact
 
