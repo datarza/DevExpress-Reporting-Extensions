@@ -54,6 +54,10 @@ namespace DemoWebApplication.Reports
                 .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
                 .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
 
+            this.AddGroupFooter().AdjustBorderStyleFromDetail()
+                .AddColumnCount(10.5D, nameof(Person.Number))
+                .AddColumnMoney(1.5D, nameof(Person.Salary));
+
             this.AddPageNumber();
         }
 
