@@ -9,16 +9,17 @@ The simplest example demonstrates the main approach:
  ```csharp
 var report = new DevExpress.XtraReports.UI.XtraReport();
 
-report.AddGrid()
-  .AddColumn(1D, "Number", nameof(Person.Number))
-  .AddColumn(1.5D, "First Name", nameof(Person.FirstName))
-  .AddColumn(1.5D, "Last Name", nameof(Person.LastName))
-  .AddColumn(1.5D, "Type", nameof(Person.Type))
-  .AddColumn(1.5D, "Department", nameof(Person.Department))
-  .AddColumn(2.5D, "Manager", nameof(Person.Manager))
-  .AddColumnDate(1D, "Started", nameof(Person.EmploymentDate))
-  .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
-  .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
+report
+  .AddGrid()
+    .AddColumn(1D, "Number", nameof(Person.Number))
+    .AddColumn(1.5D, "First Name", nameof(Person.FirstName))
+    .AddColumn(1.5D, "Last Name", nameof(Person.LastName))
+    .AddColumn(1.5D, "Type", nameof(Person.Type))
+    .AddColumn(1.5D, "Department", nameof(Person.Department))
+    .AddColumn(2.5D, "Manager", nameof(Person.Manager))
+    .AddColumnDate(1D, "Started", nameof(Person.EmploymentDate))
+    .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
+    .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
 
 report.DataSource = new List<Person>() { 
   new Person { Number = "OW-2134", FirstName = "Paul", LastName = "Daker", ... },
