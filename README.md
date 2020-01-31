@@ -23,7 +23,7 @@ report
     
 report
   .AddGroupFooter()
-    .AddColumnCount(10.5D, nameof(Person.Number))
+    .AddColumnCount(10.5D)
     .AddColumnMoney(1.5D, nameof(Person.Salary));
     
 report.DataSource = new List<Person>() { 
