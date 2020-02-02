@@ -1,4 +1,4 @@
-I often use [DevExpress Reports](https://www.devexpress.com/subscriptions/reporting/) in software projects. This library is good enough for faster developing. But in large projects, in which there may be many similar reports, development may be inconvenient. The problem is in [Visual Studio Report Designer](https://docs.devexpress.com/XtraReports/4256/visual-studio-report-designer). Designer from DevExpress is good for developing the several reports, but not convenient for developing the hundred reports with similar template and behaviour.
+I often use DevExpress Reporting in software projects. This library is good enough for faster developing. But in large projects, in which there may be many similar reports, development may be inconvenient. The problem is in [Visual Studio Report Designer](https://docs.devexpress.com/XtraReports/4256/visual-studio-report-designer). Designer from DevExpress is good for developing the several reports, but not convenient for developing the hundred reports with similar template and behaviour.
 
 That's why I created extensions, that make report development with the DevExpress library easier and more intuitive. Instead of using the Report Designer, developer can generate the reports directly in C# code.
 
@@ -40,6 +40,10 @@ The result looks like:
 #### What else is inside?
 
 DevExpress Report Extensions contain features, that allows to create headers and footers, groups and additional calculations for summaries, grids and column headers, page numbering and nested Master-Detail reports. These extensions can be easily expanded with different styles and design templates.
+
+### System requirements
+
+Library depends on the [DevExpress Reporting](https://www.devexpress.com/subscriptions/reporting/). Plese, install the full or trial version before compiling the library.
 
 #### Support or Contact
 
