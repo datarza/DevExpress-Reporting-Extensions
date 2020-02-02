@@ -1,22 +1,19 @@
-﻿using System;
+﻿
+using DevExpress.XtraReports.UI;
 
 using DevExpressReportingExtensions.Reports;
 
-using DevExpress.XtraReports.UI;
-
-namespace DevExpressReportingExtensions.Helpers
+namespace DevExpressReportingExtensions.Helpers.Base
 {
-    public abstract class BaseReportFooterHelper : BaseDetailReportHelper
+    public abstract class BaseReportFooterHelper : BaseMasterDetailBandHelper<ReportFooterBand>
     {
-        public readonly ReportFooterBand ContainerBand;
-
-        protected BaseReportFooterHelper(XtraReport report, XtraReportBase detailReport = null)
+        protected BaseReportFooterHelper(XtraReport report, 
+            XtraReportBase detailReport = null)
             : base(report, detailReport)
         {
-            this.ContainerBand = this.CreateContainerBand();
         }
 
-        protected virtual ReportFooterBand CreateContainerBand()
+        protected override ReportFooterBand CreateContainerBand()
         {
             var result = this.BaseReport.GetBandByType<ReportFooterBand>();
             if (result == null)

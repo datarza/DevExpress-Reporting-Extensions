@@ -2,14 +2,15 @@
 using System.Drawing;
 using System.Linq;
 
-using DevExpressReportingExtensions.Reports;
-
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
+using DevExpressReportingExtensions.Helpers.Base;
+using DevExpressReportingExtensions.Reports;
+
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultGroupHeaderHelper : BaseDetailReportHelper
+    public class DefaultGroupHeaderHelper : BaseMasterDetailHelper
     {
         public readonly GroupHeaderBand ContainerBand;
 

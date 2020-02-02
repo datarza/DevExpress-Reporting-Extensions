@@ -6,7 +6,6 @@ using DevExpress.XtraReports.Parameters;
 
 using DevExpressReportingExtensions.Reports;
 using DevExpressReportingExtensions.Helpers;
-using DevExpressReportingExtensions.Parameters;
 
 namespace DemoWebApplication.Reports
 {

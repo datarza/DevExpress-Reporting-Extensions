@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-using DevExpressReportingExtensions.Reports;
-
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
+using DevExpressReportingExtensions.Helpers.Base;
+using DevExpressReportingExtensions.Reports;
+
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultPageHeaderHelper : BaseReportHelper
+    public class DefaultPageHeaderHelper : BaseHelper
     {
         public readonly PageBand ContainerBand;
 

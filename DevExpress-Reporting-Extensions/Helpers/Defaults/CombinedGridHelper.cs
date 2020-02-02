@@ -3,9 +3,11 @@
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
+using DevExpressReportingExtensions.Helpers.Base;
+
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class CombinedGridHelper : BaseReportHelper
+    public class CombinedGridHelper : BaseHelper
     {
         protected readonly DefaultPageHeaderHelper headerHelper;
         protected readonly DefaultGridHelper gridHelper;

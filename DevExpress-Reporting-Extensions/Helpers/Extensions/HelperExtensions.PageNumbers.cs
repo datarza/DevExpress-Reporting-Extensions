@@ -4,7 +4,7 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public static partial class DecorationExtensions
+    public static partial class HelperExtensions
     {
         public static DefaultPageNumberHelper AddPageNumber(this XtraReport report)
         {

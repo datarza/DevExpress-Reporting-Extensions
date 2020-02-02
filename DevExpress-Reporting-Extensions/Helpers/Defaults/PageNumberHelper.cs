@@ -1,13 +1,14 @@
 ﻿using System.Drawing;
 
-using DevExpressReportingExtensions.Reports;
-
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
+using DevExpressReportingExtensions.Helpers.Base;
+using DevExpressReportingExtensions.Reports;
+
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultPageNumberHelper : BaseReportHelper
+    public class DefaultPageNumberHelper : BaseHelper
     {
         public readonly MarginBand ContainerBand;
 

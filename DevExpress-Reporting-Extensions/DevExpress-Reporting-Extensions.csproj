@@ -58,14 +58,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\Bases\BaseDetailReportHelper.cs" />
+    <Compile Include="Helpers\Bases\BaseBandHelper.cs" />
+    <Compile Include="Helpers\Bases\BaseMasterDetailBandHelper.cs" />
+    <Compile Include="Helpers\Bases\BaseMasterDetailHelper.cs" />
     <Compile Include="Helpers\Bases\BaseGroupCalculationHelper.cs" />
-    <Compile Include="Helpers\Bases\BaseMasterReportHelper.cs" />
+    <Compile Include="Helpers\Bases\BaseDetailReportHelper.cs" />
     <Compile Include="Helpers\Bases\BaseReportFooterHelper.cs" />
     <Compile Include="Helpers\Bases\BaseReportHeaderHelper.cs" />
-    <Compile Include="Helpers\Bases\BaseReportHelper.cs" />
+    <Compile Include="Helpers\Bases\BaseHelper.cs" />
     <Compile Include="Helpers\Calculations\PercentGroupCalculationHelper.cs" />
-    <Compile Include="Helpers\CombinedGridHelper.cs" />
+    <Compile Include="Helpers\Defaults\CombinedGridHelper.cs" />
     <Compile Include="Helpers\Defaults\GridHelper.cs" />
     <Compile Include="Helpers\Defaults\GroupFooterHelper.cs" />
     <Compile Include="Helpers\Defaults\GroupHeaderHelper.cs" />
@@ -73,15 +75,14 @@
     <Compile Include="Helpers\Defaults\PageHeaderHelper.cs" />
     <Compile Include="Helpers\Defaults\PageNumberHelper.cs" />
     <Compile Include="Helpers\Defaults\ReportHeaderHelper.cs" />
-    <Compile Include="Extensions\Helpers\DecorationExtensions.Grids.cs" />
-    <Compile Include="Extensions\Helpers\DecorationExtensions.Groups.cs" />
-    <Compile Include="Extensions\Helpers\DecorationExtensions.PageHeaders.cs" />
-    <Compile Include="Extensions\Helpers\DecorationExtensions.PageNumbers.cs" />
-    <Compile Include="Extensions\Helpers\DecorationExtensions.ReportHeaders.cs" />
-    <Compile Include="Extensions\Helpers\DecorationExtensions.Reports.cs" />
+    <Compile Include="Helpers\Extensions\HelperExtensions.Grids.cs" />
+    <Compile Include="Helpers\Extensions\HelperExtensions.Groups.cs" />
+    <Compile Include="Helpers\Extensions\HelperExtensions.PageHeaders.cs" />
+    <Compile Include="Helpers\Extensions\HelperExtensions.PageNumbers.cs" />
+    <Compile Include="Helpers\Extensions\HelperExtensions.ReportHeaders.cs" />
+    <Compile Include="Helpers\Extensions\HelperExtensions.Reports.cs" />
     <Compile Include="Extensions\Parameters\ParameterExtensions.cs" />
     <Compile Include="Extensions\Parameters\ParameterExtensions.GetValues.cs" />
-    <Compile Include="Extensions\Reports\DataExtensions.cs" />
     <Compile Include="Extensions\Reports\XRLabelExtensions.Alignment.cs" />
     <Compile Include="Extensions\Reports\XRLabelExtensions.Binding.cs" />
     <Compile Include="Extensions\Reports\XRLabelExtensions.Border.cs" />
@@ -93,6 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Helpers\Bases\BaseClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

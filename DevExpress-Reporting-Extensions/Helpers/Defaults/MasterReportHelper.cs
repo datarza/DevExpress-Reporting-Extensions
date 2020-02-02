@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Drawing;
 
-using DevExpressReportingExtensions.Reports;
-
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
+using DevExpressReportingExtensions.Helpers.Base;
+using DevExpressReportingExtensions.Reports;
+
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultMasterReportHelper : BaseMasterReportHelper
+    public class DefaultMasterReportHelper : BaseDetailReportHelper
     {
         public readonly XRLabel HeaderLabel;
 

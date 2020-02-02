@@ -2,7 +2,7 @@
 
 using DevExpress.XtraReports.Parameters;
 
-namespace DevExpressReportingExtensions.Parameters
+namespace DevExpressReportingExtensions.Reports
 {
     public static partial class ParameterExtensions
     {

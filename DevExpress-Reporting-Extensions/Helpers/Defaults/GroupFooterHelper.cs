@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-
-using DevExpressReportingExtensions.Reports;
 
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
+using DevExpressReportingExtensions.Helpers.Base;
+using DevExpressReportingExtensions.Reports;
+
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultGroupFooterHelper : BaseDetailReportHelper
+    public class DefaultGroupFooterHelper : BaseMasterDetailHelper
     {
         public readonly GroupFooterBand ContainerBand;
 

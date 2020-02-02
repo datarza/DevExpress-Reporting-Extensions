@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-
-using DevExpressReportingExtensions.Reports;
 
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
+using DevExpressReportingExtensions.Helpers.Base;
+using DevExpressReportingExtensions.Reports;
+
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultGridHelper : BaseDetailReportHelper
+    public class DefaultGridHelper : BaseMasterDetailHelper
     {
         public readonly DetailBand ContainerBand;
 

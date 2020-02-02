@@ -2,7 +2,7 @@
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public static partial class DecorationExtensions
+    public static partial class HelperExtensions
     {
         public static DefaultGroupHeaderHelper AddGroupHeader(this XtraReport report,
             string dataMember)

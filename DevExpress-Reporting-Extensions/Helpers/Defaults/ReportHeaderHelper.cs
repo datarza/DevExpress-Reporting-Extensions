@@ -1,10 +1,10 @@
-﻿using System;
-using System.Drawing;
-
-using DevExpressReportingExtensions.Reports;
+﻿using System.Drawing;
 
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
+
+using DevExpressReportingExtensions.Helpers.Base;
+using DevExpressReportingExtensions.Reports;
 
 namespace DevExpressReportingExtensions.Helpers
 {

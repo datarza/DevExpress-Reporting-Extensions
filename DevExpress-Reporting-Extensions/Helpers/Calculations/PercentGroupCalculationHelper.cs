@@ -2,6 +2,8 @@
 
 using DevExpress.XtraReports.UI;
 
+using DevExpressReportingExtensions.Helpers.Base;
+
 namespace DevExpressReportingExtensions.Helpers
 {
     public sealed class PercentGroupCalculationHelper : BaseGroupCalculationHelper

@@ -25,7 +25,7 @@ namespace DevExpressReportingExtensions.Reports
 
             report.ReportPrintOptions.DetailCountOnEmptyDataSource = 0;
         }
-        
+
         public static void InitializeDataMember(this XtraReportBase report, string dataMember)
         {
             if (string.IsNullOrWhiteSpace(dataMember))
@@ -50,7 +50,19 @@ namespace DevExpressReportingExtensions.Reports
 
         public static string JoinWithDataMember(this XtraReportBase report, string dataMember)
         {
-            return DataExtensions.JoinDataMembers(report.DataMember, dataMember);
+            if (string.IsNullOrWhiteSpace(dataMember))
+            {
+                throw new ArgumentNullException(nameof(dataMember));
+            }
+
+            if (!string.IsNullOrWhiteSpace(report.DataMember))
+            {
+                return $"{report.DataMember}.{dataMember}";
+            }
+            else
+            {
+                return dataMember;
+            }
         }
 
         public static T GetBandByType<T>(this XtraReportBase report) where T : Band

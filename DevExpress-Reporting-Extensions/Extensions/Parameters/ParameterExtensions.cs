@@ -1,11 +1,11 @@
-﻿using DevExpress.XtraReports.Parameters;
-using DevExpress.XtraReports.UI;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DevExpressReportingExtensions.Parameters
+using DevExpress.XtraReports.Parameters;
+using DevExpress.XtraReports.UI;
+
+namespace DevExpressReportingExtensions.Reports
 {
     public static partial class ParameterExtensions
     {
