@@ -4,7 +4,9 @@ using DemoWebApplication.Models;
 
 using DevExpress.XtraReports.Parameters;
 
-using myClippit.DevExpress.Report.Extensions;
+using DevExpressReportingExtensions.Reports;
+using DevExpressReportingExtensions.Helpers;
+using DevExpressReportingExtensions.Parameters;
 
 namespace DemoWebApplication.Reports
 {

@@ -197,15 +197,14 @@
     <Compile Include="Reports\GroupsReportGenerator.cs" />
     <Compile Include="Reports\DefaultReportGenerator.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
+    <ProjectReference Include="..\DevExpress-Reporting-Extensions\DevExpress-Reporting-Extensions.csproj">
+      <Project>{02b2c336-ecc6-44d1-b725-40cebf0ea133}</Project>
+      <Name>DevExpress-Reporting-Extensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DevExpressReportExtensions\DevExpressReportExtensions.csproj">
-      <Project>{f45f18e6-51c8-487d-8a74-fff3402a4891}</Project>
-      <Name>DevExpressReportExtensions</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

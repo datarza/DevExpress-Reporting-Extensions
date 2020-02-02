@@ -2,7 +2,8 @@
 
 using DemoWebApplication.Models;
 
-using myClippit.DevExpress.Report.Extensions;
+using DevExpressReportingExtensions.Reports;
+using DevExpressReportingExtensions.Helpers;
 
 namespace DemoWebApplication.Reports
 {
