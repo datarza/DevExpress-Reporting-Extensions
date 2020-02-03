@@ -37,6 +37,35 @@ report.DataSource = new List<Person>() {
 The result looks like:
 ![Report Example](reportexample.png)
 
+Add the group into report and change the grid layout is pretty simple.
+
+```csharp
+report
+  .AddGrid()
+    .AddColumn(1D, "Number", nameof(Person.Number))
+    .AddColumn(1.5D, "First Name", nameof(Person.FirstName))
+    .AddColumn(1.5D, "Last Name", nameof(Person.LastName))
+    .AddColumn(1.5D, "Type", nameof(Person.Type))
+    .AddColumn(2.5D, "Manager", nameof(Person.Manager))
+    .AddColumnDate(1D, "Started", nameof(Person.EmploymentDate))
+    .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
+    .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
+  
+  report.AddGroupHeader(nameof(Person.Department), "{0} Department");
+  
+  report
+    .AddGroupFooter()
+      .AddColumnCount(9.0D, nameof(Person.Number))
+      .AddColumnMoney(1.5D, nameof(Person.Salary));
+      
+report.DataSource = new List<Person>() { 
+  new Person { Number = "OW-2134", FirstName = "Paul", LastName = "Daker", ... },
+  new Person { Number = "OW-2137", FirstName = "Devon", LastName = "Curokasu", ... },
+  new Person { Number = "OW-2041", FirstName = "Claris", LastName = "Manole", ... }, 
+  new Person { Number = "OW-3261", FirstName = "Mia", LastName = "Coty", ... }
+};
+```
+
 The result looks like:
 ![Report Example](reportgroupexample.png)
 
