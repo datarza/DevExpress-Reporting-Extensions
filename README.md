@@ -51,12 +51,12 @@ report
     .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
     .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
   
-  report.AddGroupHeader(nameof(Person.Department), "{0} Department");
+report.AddGroupHeader(nameof(Person.Department), "{0} Department");
   
-  report
-    .AddGroupFooter()
-      .AddColumnCount(9.0D, nameof(Person.Number))
-      .AddColumnMoney(1.5D, nameof(Person.Salary));
+report
+  .AddGroupFooter()
+    .AddColumnCount(9.0D, nameof(Person.Number))
+    .AddColumnMoney(1.5D, nameof(Person.Salary));
       
 report.DataSource = new List<Person>() { 
   new Person { Number = "OW-2134", FirstName = "Paul", LastName = "Daker", ... },
