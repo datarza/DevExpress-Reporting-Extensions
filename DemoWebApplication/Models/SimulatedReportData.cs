@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Bogus;
 
 namespace DemoWebApplication.Models
 {
@@ -77,21 +78,23 @@ namespace DemoWebApplication.Models
         {
             int personIdIncrement = 1;
             var date = new DateTime(DateTime.Today.Year - 1, 1, 1);
+            var faker = new Faker();
+
             return new SimulatedReportData
             {
                 Persons = Enumerable.Range(0, number)
                     .Select(o => new Person
                     {
                         ID = personIdIncrement++,
-                        Number = $"{MockData.Address.StateAbbr()}-{MockData.RandomNumber.Next(100, 999)}",
-                        FirstName = MockData.Person.FirstName(),
-                        LastName = MockData.Person.Surname(),
-                        Type = MockData.Product.ProductName(),
-                        Department = MockData.Product.Department(),
-                        Manager = MockData.Person.FullName(),
-                        EmploymentDate = MockData.Utils.RandomDate(date, DateTime.Today),
-                        DismissalDate = MockData.Utils.Boolean() ? MockData.Utils.RandomDate(date, DateTime.Today) : new DateTime?(),
-                        Salary = MockData.RandomNumber.Next(1000, 10000),
+                        Number = $"{faker.Address.StateAbbr()}-{faker.Random.AlphaNumeric(3).ToUpperInvariant()}",
+                        FirstName = faker.Name.FirstName(),
+                        LastName = faker.Name.LastName(),
+                        Type = faker.Name.JobType(),
+                        Department = faker.Commerce.Department(1),
+                        Manager = faker.Name.FullName(),
+                        EmploymentDate = faker.Date.Between(date, DateTime.Today),
+                        DismissalDate = faker.Random.Bool(0.4f) ? faker.Date.Between(date, DateTime.Today) : new DateTime?(),
+                        Salary = faker.Random.Decimal(1000, 10000),
                     })
                     .ToList()
                     .Select(c => 
