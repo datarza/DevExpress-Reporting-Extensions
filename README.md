@@ -37,6 +37,8 @@ report.DataSource = new List<Person>() {
 The result looks like:
 ![Report Example](reportexample.png)
 
+#### Group the data
+
 Add the group into report and change the grid layout is pretty simple. Just add the group by the `Department` field to the report, remove this column from the grid and align the width of the columns in group footer:
 
 ```csharp
