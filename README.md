@@ -34,10 +34,41 @@ report.DataSource = new List<Person>() {
 };
 ```
 
-The result looks like:
+The generated report looks like:
 ![Report Example](reportexample.png)
 
-The result looks like:
+#### Group the data
+
+Add the group into report and change the grid layout is pretty simple. Just add the group by the `Department` field to the report, remove this column from the grid and align the width of the columns in group footer:
+
+```csharp
+report
+  .AddGrid()
+    .AddColumn(1D, "Number", nameof(Person.Number))
+    .AddColumn(1.5D, "First Name", nameof(Person.FirstName))
+    .AddColumn(1.5D, "Last Name", nameof(Person.LastName))
+    .AddColumn(1.5D, "Type", nameof(Person.Type))
+    .AddColumn(2.5D, "Manager", nameof(Person.Manager))
+    .AddColumnDate(1D, "Started", nameof(Person.EmploymentDate))
+    .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
+    .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
+  
+report.AddGroupHeader(nameof(Person.Department), "{0} Department");
+  
+report
+  .AddGroupFooter()
+    .AddColumnCount(9.0D, nameof(Person.Number))
+    .AddColumnMoney(1.5D, nameof(Person.Salary));
+      
+report.DataSource = new List<Person>() { 
+  new Person { Number = "OW-2134", FirstName = "Paul", LastName = "Daker", ... },
+  new Person { Number = "OW-2137", FirstName = "Devon", LastName = "Curokasu", ... },
+  new Person { Number = "OW-2041", FirstName = "Claris", LastName = "Manole", ... }, 
+  new Person { Number = "OW-3261", FirstName = "Mia", LastName = "Coty", ... }
+};
+```
+
+This example generate the following report:
 ![Report Example](reportgroupexample.png)
 
 #### What else is inside?
@@ -50,6 +81,6 @@ Library depends on the [DevExpress Reporting](https://www.devexpress.com/subscri
 
 #### Support or Contact
 
-Please, read the [Wiki](../../wiki) pages for detail information. Also, DemoWebApplication contains many usefull examples.
+Please, read the [Wiki](../../wiki) pages for detail information. Also, `DemoWebApplication` contains many usefull examples.
 
 Having questions? [Contact me](https://github.com/CanadianBeaver) and I will help you sort it out.
