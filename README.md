@@ -34,7 +34,7 @@ report.DataSource = new List<Person>() {
 };
 ```
 
-The result looks like:
+The generated report looks like:
 ![Report Example](reportexample.png)
 
 #### Group the data
@@ -68,7 +68,7 @@ report.DataSource = new List<Person>() {
 };
 ```
 
-The result looks like:
+This example generate the following report:
 ![Report Example](reportgroupexample.png)
 
 #### What else is inside?
