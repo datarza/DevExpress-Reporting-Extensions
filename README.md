@@ -37,6 +37,9 @@ report.DataSource = new List<Person>() {
 The result looks like:
 ![Report Example](reportexample.png)
 
+The result looks like:
+![Report Example](reportgroupexample.png)
+
 #### What else is inside?
 
 DevExpress Report Extensions contain features, that allows to create headers and footers, groups and additional calculations for summaries, grids and column headers, page numbering and nested Master-Detail reports. These extensions can be easily expanded with different styles and design templates.
