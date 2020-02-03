@@ -7,7 +7,7 @@ using DevExpressReportingExtensions.Helpers.Bases;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class CombinedGridHelper : BaseHelper
+    public class CombinedGridHelper : BaseMasterDetailHelper
     {
         protected readonly DefaultPageHeaderHelper headerHelper;
         protected readonly DefaultGridHelper gridHelper;
@@ -17,16 +17,9 @@ namespace DevExpressReportingExtensions.Helpers
 
         public IEnumerable<XRTableCell> HeaderColumns { get { return this.headerHelper.Columns; } }
         public IEnumerable<XRTableCell> DetailColumns { get { return this.gridHelper.Columns; } }
-
-        public CombinedGridHelper(XtraReport report)
-            : base(report)
-        {
-            this.headerHelper = new DefaultPageHeaderHelper(report);
-            this.gridHelper = new DefaultGridHelper(report);
-        }
-
-        public CombinedGridHelper(XtraReport report, XtraReportBase detailReport)
-            : base(report)
+        
+        public CombinedGridHelper(XtraReport report, XtraReportBase detailReport = null)
+            : base(report, detailReport)
         {
             this.headerHelper = new DefaultPageHeaderHelper(report);
             this.gridHelper = new DefaultGridHelper(report, detailReport);

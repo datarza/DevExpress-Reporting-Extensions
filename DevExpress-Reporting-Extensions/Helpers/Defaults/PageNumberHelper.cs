@@ -8,47 +8,27 @@ using DevExpressReportingExtensions.Reports;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultPageNumberHelper : BaseHelper
+    public class DefaultPageNumberHelper : BasePageFooterHelper, IControlHelper<XRPageInfo>
     {
-        public readonly MarginBand ContainerBand;
-
-        public readonly XRPageInfo ContainerControl;
+        public XRPageInfo ContainerControl { get; protected set; }
 
         public DefaultPageNumberHelper(XtraReport report,
             TextAlignment? alignment = null,
             string formatString = null)
             : base(report)
         {
-            this.ContainerBand = this.CreateContainerBand();
-
             this.ContainerControl = this.CreateContainerControls(
                 alignment ?? ReportConstants.PageNumbers.Alignment,
                     formatString ?? ReportConstants.PageNumbers.FormatString);
-        }
-
-        protected virtual BottomMarginBand CreateContainerBand()
-        {
-            var result = this.RootReport.GetBandByType<BottomMarginBand>();
-            if (result == null)
-            {
-                result = new BottomMarginBand
-                {
-                    HeightF = this.RootReport.Margins.Bottom
-                };
-                this.RootReport.Bands.Add(result);
-            }
-            return result;
         }
 
         protected virtual XRPageInfo CreateContainerControls(TextAlignment alignment, string formatString)
         {
             var result = new XRPageInfo
             {
-                LocationF = new PointF(0F, 0F),
-                SizeF = new SizeF(this.RootReport.GetBandWidth(), this.ContainerBand.HeightF),
-                Padding = new PaddingInfo(4, 4, 4, 4),
                 AnchorHorizontal = HorizontalAnchorStyles.Both,
-                AnchorVertical = VerticalAnchorStyles.Both,
+                BoundsF = new RectangleF(0F, 0F, this.RootReport.GetBandWidth(), 0F),
+                Padding = new PaddingInfo(4, 4, 4, 4),
                 TextAlignment = alignment,
                 Format = formatString,
                 ForeColor = Color.Gray,

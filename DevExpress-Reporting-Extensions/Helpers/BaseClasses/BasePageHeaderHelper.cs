@@ -24,11 +24,6 @@ namespace DevExpressReportingExtensions.Helpers.Bases
                 };
                 this.RootReport.Bands.Add(result);
             }
-            else
-            {
-                result.Controls.Clear();
-                result.HeightF = 0F;
-            }
             return result;
         }
 

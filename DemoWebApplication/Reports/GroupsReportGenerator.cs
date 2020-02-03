@@ -50,7 +50,7 @@ namespace DemoWebApplication.Reports
         {
             base.OnDataSourceDemanded(e);
 
-            this.DataSource = SimulatedReportData.GetData(null, null);
+            this.DataSource = SimulatedReportData.GetData();
         }
 
     }

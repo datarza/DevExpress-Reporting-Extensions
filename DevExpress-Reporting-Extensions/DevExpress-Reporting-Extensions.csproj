@@ -69,6 +69,7 @@
     <Compile Include="Helpers\BaseClasses\BasePageHeaderHelper.cs" />
     <Compile Include="Helpers\BaseClasses\BaseReportHeaderHelper.cs" />
     <Compile Include="Helpers\BaseClasses\BaseHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\IControlHelper.cs" />
     <Compile Include="Helpers\BaseClasses\IBandHelper.cs" />
     <Compile Include="Helpers\Calculations\PercentGroupCalculationHelper.cs" />
     <Compile Include="Helpers\Defaults\CombinedGridHelper.cs" />
@@ -100,7 +101,8 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Helpers\BaseClasses\BaseClassDiagram.cd" />
+    <None Include="Helpers\BaseClasses\ClassDiagram.cd" />
+    <None Include="Helpers\Defaults\ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

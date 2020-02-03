@@ -67,7 +67,7 @@ namespace DemoWebApplication.Reports
         {
             base.OnDataSourceDemanded(e);
 
-            this.DataSource = SimulatedReportData.GetData(
+            this.DataSource = SimulatedReportData.GetBigData(
                 this.dateFromParam.GetValue<DateTime>(),
                 this.dateToParam.GetValue<DateTime>());
         }

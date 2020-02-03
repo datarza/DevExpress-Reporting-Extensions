@@ -9,10 +9,9 @@ namespace DemoWebApplication.Models
     {
         public IList<Person> Persons { get; set; }
 
-        public static SimulatedReportData GetData(DateTime? dateFrom, DateTime? dateTo)
+        public static SimulatedReportData GetData()
         {
             var date = new DateTime(DateTime.Today.Year - 1, 1, 1);
-
             return new SimulatedReportData
             {
                 Persons = new List<Person>()
@@ -70,12 +69,48 @@ namespace DemoWebApplication.Models
                       Salary = 1234,
                     }
                 }
-                .Where(c => dateFrom.HasValue && c.EmploymentDate >= dateFrom && dateTo.HasValue && c.EmploymentDate <= dateTo ||
+            };
+        }
+
+        public static SimulatedReportData GetBigData(DateTime? dateFrom, DateTime? dateTo,
+            int number = 100)
+        {
+            int personIdIncrement = 1;
+            var date = new DateTime(DateTime.Today.Year - 1, 1, 1);
+            return new SimulatedReportData
+            {
+                Persons = Enumerable.Range(0, number)
+                    .Select(o => new Person
+                    {
+                        ID = personIdIncrement++,
+                        Number = $"{MockData.Address.StateAbbr()}-{MockData.RandomNumber.Next(100, 999)}",
+                        FirstName = MockData.Person.FirstName(),
+                        LastName = MockData.Person.Surname(),
+                        Type = MockData.Product.ProductName(),
+                        Department = MockData.Product.Department(),
+                        Manager = MockData.Person.FullName(),
+                        EmploymentDate = MockData.Utils.RandomDate(date, DateTime.Today),
+                        DismissalDate = MockData.Utils.Boolean() ? MockData.Utils.RandomDate(date, DateTime.Today) : new DateTime?(),
+                        Salary = MockData.RandomNumber.Next(1000, 10000),
+                    })
+                    .ToList()
+                    .Select(c => 
+                    {
+                        if (c.DismissalDate.HasValue && c.EmploymentDate > c.DismissalDate)
+                        {
+                            var saveDate = c.EmploymentDate;
+                            c.EmploymentDate = c.DismissalDate.Value;
+                            c.DismissalDate = saveDate;
+                        }
+                        return c;
+                    })
+                    .Where(c => dateFrom.HasValue && c.EmploymentDate >= dateFrom && dateTo.HasValue && c.EmploymentDate <= dateTo ||
                             dateFrom.HasValue && c.EmploymentDate >= dateFrom && !dateTo.HasValue ||
                             !dateFrom.HasValue && dateTo.HasValue && c.EmploymentDate <= dateTo ||
                             !dateFrom.HasValue && !dateTo.HasValue)
-                .ToList()
+                    .ToList()
             };
         }
+
     }
 }
