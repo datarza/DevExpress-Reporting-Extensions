@@ -3,15 +3,15 @@ using DevExpress.XtraReports.UI;
 
 using DevExpressReportingExtensions.Reports;
 
-namespace DevExpressReportingExtensions.Helpers.Base
+namespace DevExpressReportingExtensions.Helpers.Bases
 {
     public abstract class BaseReportHeaderHelper : BaseMasterDetailBandHelper<ReportHeaderBand>
     {
-        protected BaseReportHeaderHelper(XtraReport report, 
-            XtraReportBase detailReport = null)
+        protected BaseReportHeaderHelper(XtraReport report, XtraReportBase detailReport = null)
             : base(report, detailReport)
         {
         }
+
         protected override ReportHeaderBand CreateContainerBand()
         {
             var result = this.BaseReport.GetBandByType<ReportHeaderBand>();

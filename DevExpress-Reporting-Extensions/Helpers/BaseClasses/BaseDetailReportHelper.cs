@@ -4,20 +4,18 @@ using DevExpress.XtraReports.UI;
 
 using DevExpressReportingExtensions.Reports;
 
-namespace DevExpressReportingExtensions.Helpers.Base
+namespace DevExpressReportingExtensions.Helpers.Bases
 {
-    public abstract class BaseDetailReportHelper : BaseMasterDetailHelper
+    public abstract class BaseDetailReportHelper : BaseMasterDetailBandHelper<DetailReportBand>
     {
-        public DetailReportBand ContainerBand { get; protected set; }
-
         public string DataMember { get; protected set; }
 
         protected BaseDetailReportHelper(XtraReport report, string dataMember)
             : base(report)
         {
             this.DataMember = dataMember ?? throw new ArgumentNullException(nameof(dataMember));
+            this.InitializeDataSource();
             this.CreateIfNotExistDetailBandInRootReport();
-            this.ContainerBand = this.CreateContainerBand();
         }
 
         private void CreateIfNotExistDetailBandInRootReport()
@@ -33,15 +31,12 @@ namespace DevExpressReportingExtensions.Helpers.Base
             }
         }
 
-        protected virtual DetailReportBand CreateContainerBand()
+        protected override DetailReportBand CreateContainerBand()
         {
             var result = new DetailReportBand
             {
                 HeightF = 0F
             };
-
-            result.DataSource = this.BaseReport.DataSource;
-            result.InitializeDataMember(this.BaseReport.JoinWithDataMember(this.DataMember));
 
             if (this.BaseReport is DetailReportBand)
             {
@@ -50,6 +45,12 @@ namespace DevExpressReportingExtensions.Helpers.Base
 
             this.BaseReport.Bands.Add(result);
             return result;
+        }
+
+        protected virtual void InitializeDataSource()
+        {
+            this.ContainerBand.DataSource = this.BaseReport.DataSource;
+            this.ContainerBand.InitializeDataMember(this.BaseReport.JoinWithDataMember(this.DataMember));
         }
 
         protected virtual DetailBand CreateDetailContainer(XRControl control)

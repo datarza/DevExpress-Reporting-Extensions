@@ -58,14 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\Bases\BaseBandHelper.cs" />
-    <Compile Include="Helpers\Bases\BaseMasterDetailBandHelper.cs" />
-    <Compile Include="Helpers\Bases\BaseMasterDetailHelper.cs" />
-    <Compile Include="Helpers\Bases\BaseGroupCalculationHelper.cs" />
-    <Compile Include="Helpers\Bases\BaseDetailReportHelper.cs" />
-    <Compile Include="Helpers\Bases\BaseReportFooterHelper.cs" />
-    <Compile Include="Helpers\Bases\BaseReportHeaderHelper.cs" />
-    <Compile Include="Helpers\Bases\BaseHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseBandHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseMasterDetailBandHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseMasterDetailHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseGroupCalculationHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseDetailReportHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseDetailHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BasePageFooterHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseReportFooterHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BasePageHeaderHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseReportHeaderHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\IBandHelper.cs" />
     <Compile Include="Helpers\Calculations\PercentGroupCalculationHelper.cs" />
     <Compile Include="Helpers\Defaults\CombinedGridHelper.cs" />
     <Compile Include="Helpers\Defaults\GridHelper.cs" />
@@ -96,7 +100,7 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Helpers\Bases\BaseClassDiagram.cd" />
+    <None Include="Helpers\BaseClasses\BaseClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,7 +3,7 @@
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
-using DevExpressReportingExtensions.Helpers.Base;
+using DevExpressReportingExtensions.Helpers.Bases;
 
 namespace DevExpressReportingExtensions.Helpers
 {

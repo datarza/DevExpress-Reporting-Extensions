@@ -3,14 +3,13 @@ using DevExpress.XtraReports.UI;
 
 using DevExpressReportingExtensions.Reports;
 
-namespace DevExpressReportingExtensions.Helpers.Base
+namespace DevExpressReportingExtensions.Helpers.Bases
 {
     public abstract class BaseMasterDetailHelper : BaseHelper
     {
         protected XtraReportBase BaseReport { get; private set; }
 
-        protected BaseMasterDetailHelper(XtraReport report,
-            XtraReportBase detailReport = null)
+        protected BaseMasterDetailHelper(XtraReport report, XtraReportBase detailReport = null)
             : base(report)
         {
             this.BaseReport = detailReport ?? this.GetDetailReport(report);

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BaseBandHelper&lt;T&gt;">
+    <Position X="4.25" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BaseBandHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BaseDetailReportHelper">
+    <Position X="16.75" Y="8.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAQAAAAEAAACAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BaseDetailReportHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BaseGroupCalculationHelper">
+    <Position X="9.75" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAgAABAAAAAAAAAAABCAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BaseGroupCalculationHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BaseHelper">
+    <Position X="14" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BaseHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BaseMasterDetailBandHelper&lt;T&gt;">
+    <Position X="19.5" Y="5.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BaseMasterDetailBandHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BaseMasterDetailHelper">
+    <Position X="19.5" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BaseMasterDetailHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BaseReportFooterHelper">
+    <Position X="21.25" Y="8.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BaseReportFooterHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BaseDetailHelper">
+    <Position X="13" Y="8.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BaseDetailHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BasePageHeaderHelper">
+    <Position X="1.75" Y="5.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BasePageHeaderHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BaseReportHeaderHelper">
+    <Position X="25.25" Y="8.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BaseReportHeaderHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevExpressReportingExtensions.Helpers.Bases.BasePageFooterHelper">
+    <Position X="5.75" Y="5.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BaseClasses\BasePageFooterHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>

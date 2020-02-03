@@ -4,7 +4,7 @@ using System.Drawing;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
-using DevExpressReportingExtensions.Helpers.Base;
+using DevExpressReportingExtensions.Helpers.Bases;
 using DevExpressReportingExtensions.Reports;
 
 namespace DevExpressReportingExtensions.Helpers

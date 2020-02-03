@@ -2,7 +2,7 @@
 
 using DevExpress.XtraReports.UI;
 
-namespace DevExpressReportingExtensions.Helpers.Base
+namespace DevExpressReportingExtensions.Helpers.Bases
 {
     public abstract class BaseHelper
     {

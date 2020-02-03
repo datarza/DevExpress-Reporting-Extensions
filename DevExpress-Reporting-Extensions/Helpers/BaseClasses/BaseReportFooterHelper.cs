@@ -3,12 +3,11 @@ using DevExpress.XtraReports.UI;
 
 using DevExpressReportingExtensions.Reports;
 
-namespace DevExpressReportingExtensions.Helpers.Base
+namespace DevExpressReportingExtensions.Helpers.Bases
 {
     public abstract class BaseReportFooterHelper : BaseMasterDetailBandHelper<ReportFooterBand>
     {
-        protected BaseReportFooterHelper(XtraReport report, 
-            XtraReportBase detailReport = null)
+        protected BaseReportFooterHelper(XtraReport report, XtraReportBase detailReport = null)
             : base(report, detailReport)
         {
         }
