@@ -5,60 +5,41 @@ using System.Linq;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
-using DevExpressReportingExtensions.Helpers.Bases;
+using DevExpressReportingExtensions.Helpers.BaseClasses;
 using DevExpressReportingExtensions.Reports;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultGroupHeaderHelper : BaseMasterDetailHelper
+    public class GroupHeaderHelper : BaseGroupHeaderHelper
     {
-        public readonly GroupHeaderBand ContainerBand;
-
-        protected readonly string fieldName;
-        protected readonly XRColumnSortOrder sortOrder;
-        protected readonly string formatString;
-
-        public DefaultGroupHeaderHelper(XtraReport report,
+        public GroupHeaderHelper(XtraReport report,
             string fieldName,
-            XRColumnSortOrder? sortOrder = null,
+            XRColumnSortOrder sortOrder = XRColumnSortOrder.Ascending,
             string formatString = null)
             : this(report, null, fieldName, sortOrder, formatString)
         {
         }
 
-        public DefaultGroupHeaderHelper(XtraReport report, XtraReportBase detailReport,
+        public GroupHeaderHelper(XtraReport report, XtraReportBase detailReport,
             string fieldName,
-            XRColumnSortOrder? sortOrder = null,
+            XRColumnSortOrder sortOrder = XRColumnSortOrder.Ascending,
             string formatString = null)
-            : base(report, detailReport)
+            : this(report, detailReport, formatString, new GroupField(fieldName, sortOrder))
         {
-            this.fieldName = fieldName ?? throw new ArgumentNullException(nameof(fieldName));
-            this.sortOrder = sortOrder ?? XRColumnSortOrder.Ascending;
-            this.formatString = formatString;
-
-            this.ContainerBand = this.CreateContainerBand();
-            this.CreateContainerControls();
         }
 
-        protected virtual GroupHeaderBand CreateContainerBand()
+        protected GroupHeaderHelper(XtraReport report, XtraReportBase detailReport,
+            string formatString,
+            params GroupField[] fields)
+            : base(report, detailReport, fields)
         {
-            var result = new GroupHeaderBand
-            {
-                KeepTogether = true,
-                HeightF = 0F,
-                GroupUnion = GroupUnion.WithFirstDetail,
-                RepeatEveryPage = true,
-            };
-            result.GroupFields.Add(new GroupField(this.fieldName, this.sortOrder));
-            result.Level = this.BaseReport.Bands.OfType<GroupHeaderBand>().Count();
-            this.BaseReport.Bands.Add(result);
-            result.StyleName = this.CreateContainerBandStyle(result.Level);
-            return result;
+            this.ContainerBand.StyleName = this.CreateContainerBandStyle(this.ContainerBand.Level);
+            this.CreateContainerControls(fields[0].FieldName, formatString);
         }
 
         protected virtual string CreateContainerBandStyle(int level)
         {
-            var styleName = $"{nameof(DefaultGroupHeaderHelper)}_{nameof(GroupHeaderBand)}_{level}";
+            var styleName = $"{nameof(GroupHeaderHelper)}_{nameof(GroupHeaderBand)}_{level}";
             this.RootReport.StyleSheet.Add(new XRControlStyle()
             {
                 Name = styleName,
@@ -77,7 +58,7 @@ namespace DevExpressReportingExtensions.Helpers
             return styleName;
         }
 
-        protected virtual XRControl CreateContainerControls()
+        protected virtual XRControl CreateContainerControls(string fieldName, string formatString)
         {
             var result = new XRLabel
             {
@@ -113,7 +94,7 @@ namespace DevExpressReportingExtensions.Helpers
             }
         }
 
-        public DefaultGroupHeaderHelper AdjustBorderStyleFromDetail()
+        public GroupHeaderHelper AdjustBorderStyleFromDetail()
         {
             var detailBand = this.RootReport.Bands.GetBandByType(typeof(DetailBand));
             if (detailBand != null && detailBand.Styles.Style != null

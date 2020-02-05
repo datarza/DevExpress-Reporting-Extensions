@@ -3,26 +3,33 @@
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
-using DevExpressReportingExtensions.Helpers.Bases;
+using DevExpressReportingExtensions.Helpers.BaseClasses;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class CombinedGridHelper : BaseMasterDetailHelper
+    public class CombinedGridHelper : BaseReportHelper
     {
-        protected readonly DefaultPageHeaderHelper headerHelper;
-        protected readonly DefaultGridHelper gridHelper;
+        protected readonly PageHeaderHelper headerHelper;
+        protected readonly GridHelper gridHelper;
 
         public PageBand HeaderBand { get { return this.headerHelper.ContainerBand; } }
         public DetailBand DetailBand { get { return this.gridHelper.ContainerBand; } }
 
         public IEnumerable<XRTableCell> HeaderColumns { get { return this.headerHelper.Columns; } }
         public IEnumerable<XRTableCell> DetailColumns { get { return this.gridHelper.Columns; } }
-        
-        public CombinedGridHelper(XtraReport report, XtraReportBase detailReport = null)
-            : base(report, detailReport)
+
+        public CombinedGridHelper(XtraReport report)
+            : base(report)
         {
-            this.headerHelper = new DefaultPageHeaderHelper(report);
-            this.gridHelper = new DefaultGridHelper(report, detailReport);
+            this.headerHelper = new PageHeaderHelper(report);
+            this.gridHelper = new GridHelper(report);
+        }
+
+        public CombinedGridHelper(XtraReport report, XtraReportBase detailReport)
+            : base(report)
+        {
+            this.headerHelper = new PageHeaderHelper(report);
+            this.gridHelper = new GridHelper(report, detailReport);
         }
 
         public CombinedGridHelper AddColumn(
@@ -77,7 +84,8 @@ namespace DevExpressReportingExtensions.Helpers
 
             return this;
         }
-        
+
+
         public CombinedGridHelper AddColumnNumber(
             double weight,
             string text,

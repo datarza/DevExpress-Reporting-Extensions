@@ -2,15 +2,16 @@
 
 using DevExpress.XtraReports.UI;
 
-namespace DevExpressReportingExtensions.Helpers.Bases
+namespace DevExpressReportingExtensions.Helpers.BaseClasses
 {
-    public abstract class BaseHelper
+    public abstract class BaseReportHelper
     {
         protected XtraReport RootReport { get; private set; }
 
-        protected BaseHelper(XtraReport report)
+        protected BaseReportHelper(XtraReport report)
         {
             this.RootReport = report ?? throw new ArgumentNullException(nameof(report));
         }
+
     }
 }

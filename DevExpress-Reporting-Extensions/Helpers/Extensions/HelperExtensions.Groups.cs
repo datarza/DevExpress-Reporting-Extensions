@@ -4,42 +4,37 @@ namespace DevExpressReportingExtensions.Helpers
 {
     public static partial class HelperExtensions
     {
-        public static DefaultGroupHeaderHelper AddGroupHeader(this XtraReport report,
+        public static GroupHeaderHelper AddGroupHeader(this XtraReport report,
             string dataMember)
         {
-            return new DefaultGroupHeaderHelper(report, dataMember);
+            return new GroupHeaderHelper(report, dataMember);
         }
 
-        public static DefaultGroupHeaderHelper AddGroupHeader(this XtraReport report,
+        public static GroupHeaderHelper AddGroupHeader(this XtraReport report,
             string dataMember,
             XRColumnSortOrder sortOrder)
         {
-            return new DefaultGroupHeaderHelper(report, dataMember, sortOrder);
+            return new GroupHeaderHelper(report, dataMember, sortOrder);
         }
 
-        public static DefaultGroupHeaderHelper AddGroupHeader(this XtraReport report,
+        public static GroupHeaderHelper AddGroupHeader(this XtraReport report,
             string dataMember,
             string formatString)
         {
-            return new DefaultGroupHeaderHelper(report, dataMember, null, formatString);
+            return new GroupHeaderHelper(report, dataMember, XRColumnSortOrder.Ascending, formatString);
         }
 
-        public static DefaultGroupHeaderHelper AddGroupHeader(this XtraReport report,
+        public static GroupHeaderHelper AddGroupHeader(this XtraReport report,
             string dataMember,
             XRColumnSortOrder sortOrder,
             string formatString)
         {
-            return new DefaultGroupHeaderHelper(report, dataMember, sortOrder, formatString);
+            return new GroupHeaderHelper(report, dataMember, sortOrder, formatString);
         }
 
-        public static DefaultGroupFooterHelper AddGroupFooter(this XtraReport report)
+        public static GroupFooterHelper AddGroupFooter(this XtraReport report)
         {
-            return new DefaultGroupFooterHelper(report);
-        }
-
-        public static DefaultGroupFooterHelper AddGroupFooter(this XtraReport report, XtraReportBase detailReport)
-        {
-            return new DefaultGroupFooterHelper(report, detailReport);
+            return new GroupFooterHelper(report);
         }
 
     }

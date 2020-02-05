@@ -2,46 +2,46 @@
 
 using DevExpress.XtraReports.UI;
 
-using DevExpressReportingExtensions.Helpers.Bases;
+using DevExpressReportingExtensions.Helpers.BaseClasses;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public sealed class PercentGroupCalculationHelper : BaseGroupCalculationHelper
+    internal sealed class PercentGroupCalculationHelper : BaseGroupCalculationHelper
     {
-        private readonly string numeratorPropertyName;
+        private readonly string numeratorColumnName;
 
-        private readonly string denominatorPropertyName;
+        private readonly string denominatorColumnName;
 
-        private decimal numeratorValues;
+        private decimal numeratorSumValues;
 
-        private decimal denominatorValues;
+        private decimal denominatorSumValues;
 
         public PercentGroupCalculationHelper(XRLabel label,
-            string numeratorPropertyName,
-            string denominatorPropertyName)
+            string numeratorColumnName,
+            string denominatorColumnName)
             : base(label)
         {
-            this.numeratorPropertyName = numeratorPropertyName ?? throw new ArgumentNullException(nameof(numeratorPropertyName));
-            this.denominatorPropertyName = denominatorPropertyName ?? throw new ArgumentNullException(nameof(denominatorPropertyName));
+            this.numeratorColumnName = numeratorColumnName ?? throw new ArgumentNullException(nameof(numeratorColumnName));
+            this.denominatorColumnName = denominatorColumnName ?? throw new ArgumentNullException(nameof(denominatorColumnName));
         }
  
         protected override void Reset()
         {
-            this.numeratorValues = 0;
-            this.denominatorValues = 0;
+            this.numeratorSumValues = 0;
+            this.denominatorSumValues = 0;
         }
 
         protected override void AddObject()
         {
-            this.numeratorValues += this.RootReport.GetCurrentColumnValue<decimal>(this.numeratorPropertyName);
-            this.denominatorValues += this.RootReport.GetCurrentColumnValue<decimal>(this.denominatorPropertyName);
+            this.numeratorSumValues += this.RootReport.GetCurrentColumnValue<decimal>(this.numeratorColumnName);
+            this.denominatorSumValues += this.RootReport.GetCurrentColumnValue<decimal>(this.denominatorColumnName);
         }
 
         protected override object GetResult()
         {
-            if (this.denominatorValues != 0)
+            if (this.denominatorSumValues != 0)
             {
-                return this.numeratorValues / this.denominatorValues;
+                return this.numeratorSumValues / this.denominatorSumValues;
             }
             else
             {

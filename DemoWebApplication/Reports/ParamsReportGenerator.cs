@@ -39,9 +39,12 @@ namespace DemoWebApplication.Reports
         }
 
         // define decorations
+
+        ReportHeaderHelper headerHelper;
+
         private void InitializeDecorations()
         {
-            this.AddReportHeader("Filtering the data example");
+            this.headerHelper = this.AddReportHeader("Filtering the data", "Report example");
 
             this.AddCombinedGrid()
                 .AddColumn(1D, "Number", nameof(Person.Number))
@@ -67,9 +70,14 @@ namespace DemoWebApplication.Reports
         {
             base.OnDataSourceDemanded(e);
 
-            this.DataSource = SimulatedReportData.GetBigData(
-                this.dateFromParam.GetValue<DateTime>(),
-                this.dateToParam.GetValue<DateTime>());
+            // get parameter values
+            var dateFrom = dateFromParam.GetValue<DateTime>();
+            var dateTo = dateToParam.GetValue<DateTime>();
+
+            this.headerHelper.PrintPeriodOnMainSubTitle(dateFrom, dateTo);
+            this.headerHelper.PrintDateOnSecondSubTitle(DateTime.Now);
+
+            this.DataSource = SimulatedReportData.GetBigData(dateFrom, dateTo);
         }
 
     }

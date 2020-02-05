@@ -5,18 +5,18 @@ namespace DevExpressReportingExtensions.Helpers
 {
     public static partial class HelperExtensions
     {
-        public static DefaultMasterReportHelper AddMasterDetailReport(this XtraReport report,
+        public static DetailReportHelper AddMasterDetailReport(this XtraReport report,
             string dataMember)
         {
-            return new DefaultMasterReportHelper(report, dataMember);
+            return new DetailReportHelper(report, dataMember);
         }
 
-        public static DefaultMasterReportHelper AddMasterDetailReport(this XtraReport report,
+        public static DetailReportHelper AddMasterDetailReport(this XtraReport report,
             string dataMember,
             string headerDataMember,
             string formatString = null)
         {
-            return new DefaultMasterReportHelper(report, dataMember, headerDataMember, formatString);
+            return new DetailReportHelper(report, dataMember, headerDataMember, formatString);
         }
 
     }

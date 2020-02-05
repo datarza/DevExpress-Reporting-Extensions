@@ -4,21 +4,21 @@ using System.Drawing;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
-using DevExpressReportingExtensions.Helpers.Bases;
+using DevExpressReportingExtensions.Helpers.BaseClasses;
 using DevExpressReportingExtensions.Reports;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultMasterReportHelper : BaseDetailReportHelper
+    public class DetailReportHelper : BaseDetailReportHelper
     {
-        public readonly XRLabel HeaderLabel;
+        public XRLabel HeaderLabel { get; protected set; }
 
-        public DefaultMasterReportHelper(XtraReport report, string dataMember)
+        public DetailReportHelper(XtraReport report, string dataMember)
             : base(report, dataMember)
         {
         }
 
-        public DefaultMasterReportHelper(XtraReport report, string dataMember,
+        public DetailReportHelper(XtraReport report, string dataMember,
             string headerDataMember,
             string formatString = null)
             : base(report, dataMember)

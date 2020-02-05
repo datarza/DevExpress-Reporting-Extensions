@@ -5,21 +5,21 @@ namespace DevExpressReportingExtensions.Helpers
 {
     public static partial class HelperExtensions
     {
-        public static DefaultGridHelper AddGrid(this XtraReport report)
+        public static GridHelper AddGrid(this XtraReport report)
         {
-            return new DefaultGridHelper(report);
+            return new GridHelper(report);
         }
 
-        public static DefaultGridHelper AddGrid(this XtraReport report, XtraReportBase detailReport)
+        public static GridHelper AddGrid(this XtraReport report, XtraReportBase detailReport)
         {
-            return new DefaultGridHelper(report, detailReport);
+            return new GridHelper(report, detailReport);
         }
 
         public static CombinedGridHelper AddCombinedGrid(this XtraReport report)
         {
             return new CombinedGridHelper(report);
         }
-        
+
         public static CombinedGridHelper AddCombinedGrid(this XtraReport report, XtraReportBase detailReport)
         {
             return new CombinedGridHelper(report, detailReport);

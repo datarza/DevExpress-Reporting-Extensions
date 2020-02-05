@@ -1,59 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
-using DevExpressReportingExtensions.Helpers.Bases;
+using DevExpressReportingExtensions.Helpers.BaseClasses;
 using DevExpressReportingExtensions.Reports;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultGroupFooterHelper : BaseMasterDetailHelper
+    public class GroupFooterHelper : BaseGroupFooterHelper
     {
-        public readonly GroupFooterBand ContainerBand;
-
-        public readonly XRTableRow ContainerControl;
+        public XRTableRow ContainerControl { get; protected set; }
 
         public IEnumerable<XRTableCell> Columns { get { return this.ContainerControl.Cells; } }
         
-        public DefaultGroupFooterHelper(XtraReport report, XtraReportBase detailReport = null)
+        public GroupFooterHelper(XtraReport report, XtraReportBase detailReport = null)
             : base(report, detailReport)
         {
-            this.ContainerBand = this.CreateContainerBand();
+            this.ContainerBand.StyleName = this.CreateContainerBandStyle();
             this.ContainerControl = this.CreateContainerControls();
         }
 
-        protected virtual GroupFooterBand CreateContainerBand()
-        {
-            var result = new GroupFooterBand
-            {
-                KeepTogether = true,
-                HeightF = 0F,
-                GroupUnion = GroupFooterUnion.WithLastDetail,
-                RepeatEveryPage = false,
-            };
-            result.Level = this.BaseReport.Bands.OfType<GroupFooterBand>().Count();
-            this.BaseReport.Bands.Add(result);
-            result.StyleName = this.CreateContainerBandStyle();
-            return result;
-        }
-        
         protected virtual string CreateContainerBandStyle()
         {
-            var styleName = $"{nameof(DefaultGroupFooterHelper)}_{nameof(GroupFooterBand)}";
+            var styleName = $"{nameof(GroupFooterHelper)}_{nameof(GroupFooterBand)}";
             this.RootReport.StyleSheet.Add(new XRControlStyle()
             {
                 Name = styleName,
-                ForeColor = Color.DimGray,
+                ForeColor = Color.Black,
                 BackColor = Color.Transparent,
                 BorderColor = Color.LightGray,
                 //Borders = BorderSide.Bottom,
                 //BorderWidth = 0.5F,
                 //BorderDashStyle = BorderDashStyle.DashDot,
                 Padding = new PaddingInfo(2, 2, 1, 1),
-                Font = new Font(FontFamily.GenericSansSerif, 0.09F, FontStyle.Bold, GraphicsUnit.Inch),
+                Font = new Font(FontFamily.GenericSansSerif, 0.09F, FontStyle.Regular, GraphicsUnit.Inch),
                 TextAlignment = TextAlignment.MiddleLeft,
             });
             return styleName;
@@ -97,7 +80,7 @@ namespace DevExpressReportingExtensions.Helpers
             return result;
         }
 
-        public DefaultGroupFooterHelper AddColumn(double weight,
+        public GroupFooterHelper AddColumn(double weight,
             BorderSide? border = null)
         {
             var cell = this.ContainerControl.AddCell(weight);
@@ -108,7 +91,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultGroupFooterHelper AddColumn(
+        public GroupFooterHelper AddColumn(
             double weight,
             string dataMember,
             SummaryFunc? summaryFunc = null,
@@ -141,7 +124,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultGroupFooterHelper AddColumnCount(
+        public GroupFooterHelper AddColumnCount(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -158,7 +141,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultGroupFooterHelper AddColumnNumber(
+        public GroupFooterHelper AddColumnNumber(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -175,7 +158,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultGroupFooterHelper AddColumnMoney(
+        public GroupFooterHelper AddColumnMoney(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -192,7 +175,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultGroupFooterHelper AddColumnPercent(
+        public GroupFooterHelper AddColumnPercent(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -209,11 +192,11 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
         
-        public DefaultGroupFooterHelper AddColumnPercent(
+        public GroupFooterHelper AddColumnPercent(
             double weight,
             string dataMember,
-            string getVariation,
-            string getDenominator,
+            string numeratorColumnName,
+            string denominatorColumnName,
             BorderSide? border = null,
             TextAlignment? alignment = null)
         {
@@ -225,12 +208,12 @@ namespace DevExpressReportingExtensions.Helpers
 
             cell.Summary = this.CreateSummary(SummaryFunc.Custom, binding.FormatString);
 
-            new PercentGroupCalculationHelper(cell, getVariation, getDenominator);
+            new PercentGroupCalculationHelper(cell, numeratorColumnName, denominatorColumnName);
 
             return this;
         }
 
-        public DefaultGroupFooterHelper SetFormat(string formatString)
+        public GroupFooterHelper SetFormat(string formatString)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)
@@ -240,7 +223,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultGroupFooterHelper SetBorder(BorderSide border)
+        public GroupFooterHelper SetBorder(BorderSide border)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)
@@ -250,7 +233,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultGroupFooterHelper SetAlignment(TextAlignment alignment)
+        public GroupFooterHelper SetAlignment(TextAlignment alignment)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)
@@ -260,7 +243,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultGroupFooterHelper AdjustBorderStyleFromDetail()
+        public GroupFooterHelper AdjustBorderStyleFromDetail()
         {
             var detailBand = this.BaseReport.Bands.GetBandByType(typeof(DetailBand));
             if (detailBand != null && detailBand.Styles.Style != null

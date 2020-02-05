@@ -4,50 +4,27 @@ using System.Drawing;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
-using DevExpressReportingExtensions.Helpers.Bases;
+using DevExpressReportingExtensions.Helpers.BaseClasses;
 using DevExpressReportingExtensions.Reports;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class DefaultPageHeaderHelper : BaseHelper
+    public class PageHeaderHelper : BasePageHeaderHelper
     {
-        public readonly PageBand ContainerBand;
-
-        public readonly XRTableRow ContainerControl;
+        public XRTableRow ContainerControl { get; protected set; }
 
         public IEnumerable<XRTableCell> Columns { get { return this.ContainerControl.Cells; } }
 
-        public DefaultPageHeaderHelper(XtraReport report)
+        public PageHeaderHelper(XtraReport report)
             : base(report)
         {
-            this.ContainerBand = this.CreateContainerBand();
+            this.ContainerBand.StyleName = this.CreateContainerBandStyle();
             this.ContainerControl = this.CreateContainerControls();
-        }
-
-        protected virtual PageHeaderBand CreateContainerBand()
-        {
-            var result = this.RootReport.GetBandByType<PageHeaderBand>();
-            if (result == null)
-            {
-                result = new PageHeaderBand()
-                {
-                    PrintOn = PrintOnPages.AllPages,
-                    HeightF = 0F,
-                };
-                this.RootReport.Bands.Add(result);
-            }
-            else
-            {
-                result.Controls.Clear();
-                result.HeightF = 0F;
-            }
-            result.StyleName = this.CreateContainerBandStyle();
-            return result;
         }
 
         protected virtual string CreateContainerBandStyle()
         {
-            var styleName = $"{nameof(DefaultPageHeaderHelper)}_{nameof(PageHeaderBand)}";
+            var styleName = $"{nameof(PageHeaderHelper)}_{nameof(PageHeaderBand)}";
             this.RootReport.StyleSheet.Add(new XRControlStyle()
             {
                 Name = styleName,
@@ -89,7 +66,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this.ContainerControl.AddCell(weight, text);
         }
 
-        public DefaultPageHeaderHelper AddColumn(
+        public PageHeaderHelper AddColumn(
            double weight,
            BorderSide? border = null,
            TextAlignment? alignment = null)
@@ -99,7 +76,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultPageHeaderHelper AddColumn(
+        public PageHeaderHelper AddColumn(
            double weight,
            string text,
            BorderSide? border = null,
@@ -120,7 +97,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultPageHeaderHelper AddColumnDate(
+        public PageHeaderHelper AddColumnDate(
            double weight,
            string text,
            BorderSide? border = null,
@@ -133,7 +110,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultPageHeaderHelper AddColumnDateTime(
+        public PageHeaderHelper AddColumnDateTime(
            double weight,
            string text,
            BorderSide? border = null,
@@ -146,7 +123,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultPageHeaderHelper AddColumnNumber(
+        public PageHeaderHelper AddColumnNumber(
            double weight,
            string text,
            BorderSide? border = null,
@@ -159,7 +136,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultPageHeaderHelper AddColumnMoney(
+        public PageHeaderHelper AddColumnMoney(
            double weight,
            string text,
            BorderSide? border = null,
@@ -172,7 +149,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultPageHeaderHelper AddColumnPercent(
+        public PageHeaderHelper AddColumnPercent(
            double weight,
            string text,
            BorderSide? border = null,
@@ -185,7 +162,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultPageHeaderHelper SetBorder(BorderSide border)
+        public PageHeaderHelper SetBorder(BorderSide border)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)
@@ -195,7 +172,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public DefaultPageHeaderHelper SetAlignment(TextAlignment alignment)
+        public PageHeaderHelper SetAlignment(TextAlignment alignment)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)

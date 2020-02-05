@@ -2,9 +2,9 @@
 
 using DevExpress.XtraReports.UI;
 
-namespace DevExpressReportingExtensions.Helpers.Bases
+namespace DevExpressReportingExtensions.Helpers.BaseClasses
 {
-    public abstract class BaseGroupCalculationHelper : BaseHelper
+    public abstract class BaseGroupCalculationHelper : BaseReportHelper
     {
         protected BaseGroupCalculationHelper(XRLabel label)
             : base(label.RootReport)

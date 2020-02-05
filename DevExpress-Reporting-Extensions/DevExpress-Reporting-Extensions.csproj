@@ -58,25 +58,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\BaseClasses\BaseBandHelper.cs" />
-    <Compile Include="Helpers\BaseClasses\BaseMasterDetailBandHelper.cs" />
-    <Compile Include="Helpers\BaseClasses\BaseMasterDetailHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseDetailBandHelper.cs" />
     <Compile Include="Helpers\BaseClasses\BaseGroupCalculationHelper.cs" />
     <Compile Include="Helpers\BaseClasses\BaseDetailReportHelper.cs" />
-    <Compile Include="Helpers\BaseClasses\BaseDetailHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseGroupFooterHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseGroupHeaderHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseMasterDetailReportHelper.cs" />
     <Compile Include="Helpers\BaseClasses\BasePageFooterHelper.cs" />
     <Compile Include="Helpers\BaseClasses\BaseReportFooterHelper.cs" />
     <Compile Include="Helpers\BaseClasses\BasePageHeaderHelper.cs" />
     <Compile Include="Helpers\BaseClasses\BaseReportHeaderHelper.cs" />
-    <Compile Include="Helpers\BaseClasses\BaseHelper.cs" />
-    <Compile Include="Helpers\BaseClasses\IControlHelper.cs" />
-    <Compile Include="Helpers\BaseClasses\IBandHelper.cs" />
+    <Compile Include="Helpers\BaseClasses\BaseReportHelper.cs" />
     <Compile Include="Helpers\Calculations\PercentGroupCalculationHelper.cs" />
     <Compile Include="Helpers\Defaults\CombinedGridHelper.cs" />
+    <Compile Include="Helpers\Defaults\DetailReportHelper.cs" />
     <Compile Include="Helpers\Defaults\GridHelper.cs" />
     <Compile Include="Helpers\Defaults\GroupFooterHelper.cs" />
     <Compile Include="Helpers\Defaults\GroupHeaderHelper.cs" />
-    <Compile Include="Helpers\Defaults\MasterReportHelper.cs" />
     <Compile Include="Helpers\Defaults\PageHeaderHelper.cs" />
     <Compile Include="Helpers\Defaults\PageNumberHelper.cs" />
     <Compile Include="Helpers\Defaults\ReportHeaderHelper.cs" />
@@ -100,9 +98,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Helpers\BaseClasses\ClassDiagram.cd" />
-    <None Include="Helpers\Defaults\ClassDiagram.cd" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

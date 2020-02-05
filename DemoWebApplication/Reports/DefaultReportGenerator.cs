@@ -24,7 +24,7 @@ namespace DemoWebApplication.Reports
         // define decorations
         private void InitializeDecorations()
         {
-            this.AddReportHeader("Simple example");
+            this.AddReportHeader("Simple", "Report example");
 
             this.AddCombinedGrid()
                 .AddColumn(1D, "Number", nameof(Person.Number))

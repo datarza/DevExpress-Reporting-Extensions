@@ -3,16 +3,19 @@ using DevExpress.XtraReports.UI;
 
 using DevExpressReportingExtensions.Reports;
 
-namespace DevExpressReportingExtensions.Helpers.Bases
+namespace DevExpressReportingExtensions.Helpers.BaseClasses
 {
-    public abstract class BaseDetailHelper : BaseMasterDetailBandHelper<DetailBand>
+    public abstract class BaseDetailBandHelper : BaseMasterDetailReportHelper
     {
-        protected BaseDetailHelper(XtraReport report, XtraReportBase detailReport = null)
+        public DetailBand ContainerBand { get; protected set; }
+
+        protected BaseDetailBandHelper(XtraReport report, XtraReportBase detailReport = null)
             : base(report, detailReport)
         {
+            this.ContainerBand = this.CreateContainerBand();
         }
 
-        protected override DetailBand CreateContainerBand()
+        protected virtual DetailBand CreateContainerBand()
         {
             var result = this.BaseReport.GetBandByType<DetailBand>();
             if (result == null)
@@ -22,11 +25,6 @@ namespace DevExpressReportingExtensions.Helpers.Bases
                     HeightF = 0F,
                 };
                 this.BaseReport.Bands.Add(result);
-            }
-            else
-            {
-                result.Controls.Clear();
-                result.HeightF = 0F;
             }
             return result;
         }

@@ -6,29 +6,29 @@ namespace DevExpressReportingExtensions.Helpers
 {
     public static partial class HelperExtensions
     {
-        public static DefaultPageNumberHelper AddPageNumber(this XtraReport report)
+        public static PageNumberHelper AddPageNumber(this XtraReport report)
         {
-            return new DefaultPageNumberHelper(report);
+            return new PageNumberHelper(report);
         }
 
-        public static DefaultPageNumberHelper AddPageNumber(this XtraReport report,
+        public static PageNumberHelper AddPageNumber(this XtraReport report,
             TextAlignment alignment)
         {
-            return new DefaultPageNumberHelper(report, alignment);
+            return new PageNumberHelper(report, alignment);
         }
 
-        public static DefaultPageNumberHelper AddPageNumber(this XtraReport report,
+        public static PageNumberHelper AddPageNumber(this XtraReport report,
             string formatString)
         {
-            return new DefaultPageNumberHelper(report, null, formatString);
+            return new PageNumberHelper(report, null, formatString);
         }
 
-        public static DefaultPageNumberHelper AddPageNumber(this XtraReport report,
+        public static PageNumberHelper AddPageNumber(this XtraReport report,
             TextAlignment alignment,
             string formatString)
         {
-            return new DefaultPageNumberHelper(report, alignment, formatString);
+            return new PageNumberHelper(report, alignment, formatString);
         }
-        
+
     }
 }

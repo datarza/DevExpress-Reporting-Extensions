@@ -3,23 +3,25 @@ using DevExpress.XtraReports.UI;
 
 using DevExpressReportingExtensions.Reports;
 
-namespace DevExpressReportingExtensions.Helpers.Bases
+namespace DevExpressReportingExtensions.Helpers.BaseClasses
 {
-    public abstract class BasePageHeaderHelper : BaseBandHelper<PageHeaderBand>
+    public abstract class BasePageHeaderHelper : BaseReportHelper
     {
+        public PageHeaderBand ContainerBand { get; protected set; }
+
         protected BasePageHeaderHelper(XtraReport report)
             : base(report)
         {
+            this.ContainerBand = this.CreateContainerBand();
         }
 
-        protected override PageHeaderBand CreateContainerBand()
+        protected virtual PageHeaderBand CreateContainerBand()
         {
             var result = this.RootReport.GetBandByType<PageHeaderBand>();
             if (result == null)
             {
                 result = new PageHeaderBand()
                 {
-                    PrintOn = PrintOnPages.AllPages,
                     HeightF = 0F,
                 };
                 this.RootReport.Bands.Add(result);

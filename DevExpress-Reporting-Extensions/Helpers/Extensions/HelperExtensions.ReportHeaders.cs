@@ -5,16 +5,28 @@ namespace DevExpressReportingExtensions.Helpers
 {
     public static partial class HelperExtensions
     {
-        public static DefaultReportHeaderHelper AddReportHeader(this XtraReport report, string headerText)
+        public static ReportHeaderHelper AddReportHeader(this XtraReport report,
+            string title1,
+            string title2)
         {
-            return new DefaultReportHeaderHelper(report, headerText);
+            return new ReportHeaderHelper(report, title1, title2);
         }
 
-        public static DefaultReportHeaderHelper AddReportHeader(this XtraReport report, 
-            XtraReportBase detailReport, 
-            string headerText)
+        public static ReportHeaderHelper AddReportHeader(this XtraReport report,
+            string title1,
+            string title2,
+            string subTitle1)
         {
-            return new DefaultReportHeaderHelper(report, detailReport, headerText);
+            return new ReportHeaderHelper(report, title1, title2, subTitle1);
+        }
+
+        public static ReportHeaderHelper AddReportHeader(this XtraReport report,
+            string title1,
+            string title2,
+            string subTitle1,
+            string subTitle2)
+        {
+            return new ReportHeaderHelper(report, title1, title2, subTitle1, subTitle2);
         }
 
     }
