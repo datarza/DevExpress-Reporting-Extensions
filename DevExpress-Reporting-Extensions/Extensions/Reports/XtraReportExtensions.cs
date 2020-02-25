@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Drawing.Printing;
 
 using DevExpress.DataAccess.ObjectBinding;
@@ -63,6 +64,15 @@ namespace DevExpressReportingExtensions.Reports
             {
                 return dataMember;
             }
+        }
+        
+        public static FormattingRule AddZeroNullFormattingRule(this XtraReport report, string dataMember)
+        {
+            var zeroNullRule = new FormattingRule();
+            report.FormattingRuleSheet.Add(zeroNullRule);
+            zeroNullRule.Condition = $"[{report.JoinWithDataMember(dataMember)}] == 0";
+            zeroNullRule.Formatting.ForeColor = Color.Transparent;
+            return zeroNullRule;
         }
 
         public static T GetBandByType<T>(this XtraReportBase report) where T : Band

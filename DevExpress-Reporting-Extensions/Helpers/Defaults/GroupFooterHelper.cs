@@ -153,6 +153,8 @@ namespace DevExpressReportingExtensions.Helpers
 
             cell.SetFormatNumber(null, border, alignment);
 
+            cell.AddZeroNullFormattingRule(dataMember);
+
             cell.Summary = this.CreateSummary(SummaryFunc.Sum, binding.FormatString);
 
             return this;
@@ -169,6 +171,8 @@ namespace DevExpressReportingExtensions.Helpers
             var binding = cell.AddTextBinding(this.BaseReport.JoinWithDataMember(dataMember));
 
             cell.SetFormatMoney(null, border, alignment);
+
+            cell.AddZeroNullFormattingRule(dataMember);
 
             cell.Summary = this.CreateSummary(SummaryFunc.Sum, binding.FormatString);
 
@@ -189,6 +193,8 @@ namespace DevExpressReportingExtensions.Helpers
 
             cell.SetFormatPercent(null, border, alignment);
 
+            cell.AddZeroNullFormattingRule(dataMember);
+
             return this;
         }
         
@@ -205,6 +211,8 @@ namespace DevExpressReportingExtensions.Helpers
             var binding = cell.AddTextBinding(this.BaseReport.JoinWithDataMember(dataMember));
 
             cell.SetFormatPercent(null, border, alignment);
+
+            cell.AddZeroNullFormattingRule(dataMember);
 
             cell.Summary = this.CreateSummary(SummaryFunc.Custom, binding.FormatString);
 

@@ -150,6 +150,8 @@ namespace DevExpressReportingExtensions.Helpers
 
             cell.SetFormatNumber(null, border, alignment);
 
+            cell.AddZeroNullFormattingRule(dataMember);
+
             return this;
         }
 
@@ -163,6 +165,8 @@ namespace DevExpressReportingExtensions.Helpers
 
             cell.SetFormatMoney(null, border, alignment);
 
+            cell.AddZeroNullFormattingRule(dataMember);
+
             return this;
         }
 
@@ -175,6 +179,8 @@ namespace DevExpressReportingExtensions.Helpers
             var cell = this.AddColumn(weight, dataMember);
 
             cell.SetFormatPercent(null, border, alignment);
+
+            cell.AddZeroNullFormattingRule(dataMember);
 
             return this;
         }
