@@ -24,17 +24,10 @@ namespace DevExpressReportingExtensions.Helpers
             string fieldName,
             XRColumnSortOrder sortOrder = XRColumnSortOrder.Ascending,
             string formatString = null)
-            : this(report, detailReport, formatString, new GroupField(fieldName, sortOrder))
-        {
-        }
-
-        protected GroupHeaderHelper(XtraReport report, XtraReportBase detailReport,
-            string formatString,
-            params GroupField[] fields)
-            : base(report, detailReport, fields)
+            : base(report, detailReport, new GroupField[] { new GroupField(fieldName, sortOrder) })
         {
             this.ContainerBand.StyleName = this.CreateContainerBandStyle(this.ContainerBand.Level);
-            this.CreateContainerControls(fields[0].FieldName, formatString);
+            this.CreateContainerControls(fieldName, formatString);
         }
 
         protected virtual string CreateContainerBandStyle(int level)
@@ -74,7 +67,7 @@ namespace DevExpressReportingExtensions.Helpers
             this.ContainerBand.Controls.Add(result);
 
             if (this.RootReport == this.BaseReport)
-            {   
+            {
                 result.PrintOnPage += delegate (object sender, PrintOnPageEventArgs e)
                 {
                     this.SetBookmarkForMainGroup((XRControl)sender);
