@@ -2,14 +2,13 @@
 
 namespace DevExpressReportingExtensions.Reports
 {
-    public static partial class XRLabelExtensions
+    public static partial class XRControlExtensions
     {
-        internal static XRLabel AddZeroNullFormattingRule(this XRLabel control,
+        internal static void AddZeroNullFormattingRule(this XRControl control,
             string dataMember)
         {
             var rule = control.RootReport.AddZeroNullFormattingRule(dataMember);
             control.FormattingRules.Add(rule);
-            return control;
         }
 
     }

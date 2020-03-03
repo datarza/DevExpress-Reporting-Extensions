@@ -58,7 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\Reports\XRLabelExtensions.FormattingRules.cs" />
+    <Compile Include="Extensions\Reports\XRControlExtensions.FormattingRules.cs" />
     <Compile Include="Helpers\BaseClasses\BaseDetailBandHelper.cs" />
     <Compile Include="Helpers\BaseClasses\BaseGroupCalculationHelper.cs" />
     <Compile Include="Helpers\BaseClasses\BaseDetailReportHelper.cs" />
@@ -87,10 +87,10 @@
     <Compile Include="Helpers\Extensions\HelperExtensions.Reports.cs" />
     <Compile Include="Extensions\Parameters\ParameterExtensions.cs" />
     <Compile Include="Extensions\Parameters\ParameterExtensions.GetValues.cs" />
-    <Compile Include="Extensions\Reports\XRLabelExtensions.Alignments.cs" />
-    <Compile Include="Extensions\Reports\XRLabelExtensions.Bindings.cs" />
-    <Compile Include="Extensions\Reports\XRLabelExtensions.Borders.cs" />
-    <Compile Include="Extensions\Reports\XRLabelExtensions.Formats.cs" />
+    <Compile Include="Extensions\Reports\XRControlExtensions.Alignments.cs" />
+    <Compile Include="Extensions\Reports\XRControlExtensions.Bindings.cs" />
+    <Compile Include="Extensions\Reports\XRControlExtensions.Borders.cs" />
+    <Compile Include="Extensions\Reports\XRControlExtensions.Formats.cs" />
     <Compile Include="Extensions\Reports\XRTableRowExtensions.cs" />
     <Compile Include="Extensions\Reports\XtraReportExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

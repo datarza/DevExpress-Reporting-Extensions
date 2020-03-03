@@ -5,9 +5,9 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.Reports
 {
-    public static partial class XRLabelExtensions
+    public static partial class XRControlExtensions
     {
-        internal static XRLabel SetFormat(this XRLabel control,
+        internal static void SetFormat(this XRControl control,
             string formatString)
         {
             if (formatString == null)
@@ -20,10 +20,9 @@ namespace DevExpressReportingExtensions.Reports
             {
                 binding.FormatString = formatString;
             }
-            return control;
         }
 
-        internal static XRLabel SetFormat(this XRLabel control,
+        internal static void SetFormat(this XRControl control,
             string formatString,
             BorderSide? border,
             TextAlignment? alignment)
@@ -42,11 +41,9 @@ namespace DevExpressReportingExtensions.Reports
             {
                 control.SetAlignment(alignment.Value);
             }
-
-            return control;
         }
 
-        internal static XRLabel SetFormatDate(this XRLabel control,
+        internal static void SetFormatDate(this XRControl control,
             string formatString = null,
             BorderSide? border = null,
             TextAlignment? alignment = null)
@@ -55,10 +52,9 @@ namespace DevExpressReportingExtensions.Reports
                 formatString ?? ReportConstants.FormatStrings.Date,
                 border,
                 alignment ?? TextAlignment.MiddleCenter);
-            return control;
         }
 
-        internal static XRLabel SetFormatDateTime(this XRLabel control,
+        internal static void SetFormatDateTime(this XRControl control,
             string formatString = null,
             BorderSide? border = null,
             TextAlignment? alignment = null)
@@ -67,10 +63,9 @@ namespace DevExpressReportingExtensions.Reports
                 formatString ?? ReportConstants.FormatStrings.DateTime,
                 border,
                 alignment ?? TextAlignment.MiddleCenter);
-            return control;
         }
 
-        internal static XRLabel SetFormatCount(this XRLabel control,
+        internal static void SetFormatCount(this XRControl control,
             string formatString = null,
             BorderSide? border = null,
             TextAlignment? alignment = null)
@@ -79,10 +74,9 @@ namespace DevExpressReportingExtensions.Reports
                 formatString ?? ReportConstants.FormatStrings.Count,
                 border,
                 alignment ?? TextAlignment.MiddleLeft);
-            return control;
         }
 
-        internal static XRLabel SetFormatNumber(this XRLabel control,
+        internal static void SetFormatNumber(this XRControl control,
             string formatString = null,
             BorderSide? border = null,
             TextAlignment? alignment = null)
@@ -91,10 +85,9 @@ namespace DevExpressReportingExtensions.Reports
                 formatString ?? ReportConstants.FormatStrings.Number,
                 border,
                 alignment ?? TextAlignment.MiddleRight);
-            return control;
         }
 
-        internal static XRLabel SetFormatMoney(this XRLabel control,
+        internal static void SetFormatMoney(this XRControl control,
             string formatString = null,
             BorderSide? border = null,
             TextAlignment? alignment = null)
@@ -103,10 +96,9 @@ namespace DevExpressReportingExtensions.Reports
                 formatString ?? ReportConstants.FormatStrings.Money,
                 border,
                 alignment ?? TextAlignment.MiddleRight);
-            return control;
         }
 
-        internal static XRLabel SetFormatPercent(this XRLabel control,
+        internal static void SetFormatPercent(this XRControl control,
             string formatString = null,
             BorderSide? border = null,
             TextAlignment? alignment = null)
@@ -115,7 +107,6 @@ namespace DevExpressReportingExtensions.Reports
                 formatString ?? ReportConstants.FormatStrings.Percent,
                 border,
                 alignment ?? TextAlignment.MiddleRight);
-            return control;
         }
 
     }

@@ -3,9 +3,9 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.Reports
 {
-    public static partial class XRLabelExtensions
+    public static partial class XRControlExtensions
     {
-        public static XRLabel SetAlignment(this XRLabel control,
+        public static void SetAlignment(this XRControl control,
             TextAlignment alignment)
         {
             int h = 0;
@@ -40,8 +40,6 @@ namespace DevExpressReportingExtensions.Reports
             }
 
             control.TextAlignment = CalculateTextAlignment(h, v);
-
-            return control;
         }
 
         private static TextAlignment CalculateTextAlignment(int h, int v)

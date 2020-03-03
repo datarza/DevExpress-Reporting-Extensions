@@ -3,12 +3,11 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.Reports
 {
-    public static partial class XRLabelExtensions
+    public static partial class XRControlExtensions
     {
-        public static XRLabel SetBorder(this XRLabel control, BorderSide border)
+        public static void SetBorder(this XRControl control, BorderSide border)
         {
             control.Borders = control.GetEffectiveBorders() | border;
-            return control;
         }
 
     }

@@ -4,9 +4,9 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.Reports
 {
-    public static partial class XRLabelExtensions
+    public static partial class XRControlExtensions
     {
-        public static XRBinding AddTextBinding(this XRLabel control,
+        public static XRBinding AddTextBinding(this XRControl control,
             string dataMember,
             string formatString = null)
         {
@@ -34,7 +34,7 @@ namespace DevExpressReportingExtensions.Reports
             return binding;
         }
 
-        public static XRBinding GetTextBinding(this XRLabel control)
+        public static XRBinding GetTextBinding(this XRControl control)
         {
             return control.DataBindings[nameof(control.Text)];
         }
