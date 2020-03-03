@@ -9,10 +9,10 @@ namespace DevExpressReportingExtensions.Helpers
 {
     public class CombinedGridHelper : BaseReportHelper
     {
-        protected readonly PageHeaderHelper headerHelper;
-        protected readonly GridHelper gridHelper;
+        protected readonly GridCaptionsHelper headerHelper;
+        protected readonly GridColumnsHelper gridHelper;
 
-        public PageBand HeaderBand { get { return this.headerHelper.ContainerBand; } }
+        public Band HeaderBand { get { return this.headerHelper.ContainerBand; } }
         public DetailBand DetailBand { get { return this.gridHelper.ContainerBand; } }
 
         public IEnumerable<XRTableCell> HeaderColumns { get { return this.headerHelper.Columns; } }
@@ -21,15 +21,29 @@ namespace DevExpressReportingExtensions.Helpers
         public CombinedGridHelper(XtraReport report)
             : base(report)
         {
-            this.headerHelper = new PageHeaderHelper(report);
-            this.gridHelper = new GridHelper(report);
+            this.headerHelper = new GridCaptionsHelper(report);
+            this.gridHelper = new GridColumnsHelper(report);
+        }
+
+        public CombinedGridHelper(XtraReport report, SubBand captionsBand)
+            : base(report)
+        {
+            this.headerHelper = new GridCaptionsHelper(report, captionsBand);
+            this.gridHelper = new GridColumnsHelper(report);
         }
 
         public CombinedGridHelper(XtraReport report, XtraReportBase detailReport)
             : base(report)
         {
-            this.headerHelper = new PageHeaderHelper(report);
-            this.gridHelper = new GridHelper(report, detailReport);
+            this.headerHelper = new GridCaptionsHelper(report);
+            this.gridHelper = new GridColumnsHelper(report, detailReport);
+        }
+
+        public CombinedGridHelper(XtraReport report, SubBand captionsBand, XtraReportBase detailReport)
+            : base(report)
+        {
+            this.headerHelper = new GridCaptionsHelper(report, captionsBand);
+            this.gridHelper = new GridColumnsHelper(report, detailReport);
         }
 
         public CombinedGridHelper AddColumn(

@@ -73,10 +73,10 @@
     <Compile Include="Helpers\Calculations\PercentGroupCalculationHelper.cs" />
     <Compile Include="Helpers\Defaults\CombinedGridHelper.cs" />
     <Compile Include="Helpers\Defaults\DetailReportHelper.cs" />
-    <Compile Include="Helpers\Defaults\GridHelper.cs" />
+    <Compile Include="Helpers\Defaults\GridCaptionsHelper.cs" />
+    <Compile Include="Helpers\Defaults\GridColumnsHelper.cs" />
     <Compile Include="Helpers\Defaults\GroupFooterHelper.cs" />
     <Compile Include="Helpers\Defaults\GroupHeaderHelper.cs" />
-    <Compile Include="Helpers\Defaults\PageHeaderHelper.cs" />
     <Compile Include="Helpers\Defaults\PageNumberHelper.cs" />
     <Compile Include="Helpers\Defaults\ReportHeaderHelper.cs" />
     <Compile Include="Helpers\Extensions\HelperExtensions.Grids.cs" />

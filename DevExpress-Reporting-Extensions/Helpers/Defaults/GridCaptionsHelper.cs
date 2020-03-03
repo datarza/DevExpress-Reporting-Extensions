@@ -9,29 +9,62 @@ using DevExpressReportingExtensions.Reports;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class PageHeaderHelper : BasePageHeaderHelper
+    public class GridCaptionsHelper : BaseReportHelper
     {
+        public Band ContainerBand { get; protected set; }
+
         public XRTableRow ContainerControl { get; protected set; }
 
         public IEnumerable<XRTableCell> Columns { get { return this.ContainerControl.Cells; } }
 
-        public PageHeaderHelper(XtraReport report)
+        public GridCaptionsHelper(XtraReport report, SubBand band = null)
             : base(report)
         {
+            this.ContainerBand = band ?? this.CreateContainerBand();
             this.ContainerBand.StyleName = this.CreateContainerBandStyle();
             this.ContainerControl = this.CreateContainerControls();
         }
 
+        protected virtual Band CreateContainerBand()
+        {
+            Band result = this.RootReport.GetBandByType<PageHeaderBand>();
+            if (result == null)
+            {
+                result = new PageHeaderBand()
+                {
+                    HeightF = 0F,
+                };
+                this.RootReport.Bands.Add(result);
+            }
+            else
+            {
+                if (result.Controls.Count > 0)
+                {
+                    SubBand subresult = new SubBand()
+                    {
+                        HeightF = 0F,
+                    };
+                    result.SubBands.Add(subresult);
+                    result = subresult;
+                }
+                else
+                {
+                    result.HeightF = 0F;
+                }
+            }
+            return result;
+        }
+
         protected virtual string CreateContainerBandStyle()
         {
-            var styleName = $"{nameof(PageHeaderHelper)}_{nameof(PageHeaderBand)}";
+            var styleName = $"{nameof(GridCaptionsHelper)}_{this.ContainerBand.GetType().Name}";
             this.RootReport.StyleSheet.Add(new XRControlStyle()
             {
                 Name = styleName,
                 ForeColor = Color.DimGray,
                 BackColor = Color.Transparent,
                 BorderColor = Color.LightGray,
-                Borders = BorderSide.Bottom,
+                Borders = BorderSide.Bottom | BorderSide.Top,
                 BorderWidth = 0.5F,
                 BorderDashStyle = BorderDashStyle.Solid,
                 Padding = new PaddingInfo(2, 2, 1, 1),
@@ -66,7 +99,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this.ContainerControl.AddCell(weight, text);
         }
 
-        public PageHeaderHelper AddColumn(
+        public GridCaptionsHelper AddColumn(
            double weight,
            BorderSide? border = null,
            TextAlignment? alignment = null)
@@ -76,7 +109,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public PageHeaderHelper AddColumn(
+        public GridCaptionsHelper AddColumn(
            double weight,
            string text,
            BorderSide? border = null,
@@ -97,7 +130,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public PageHeaderHelper AddColumnDate(
+        public GridCaptionsHelper AddColumnDate(
            double weight,
            string text,
            BorderSide? border = null,
@@ -110,7 +143,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public PageHeaderHelper AddColumnDateTime(
+        public GridCaptionsHelper AddColumnDateTime(
            double weight,
            string text,
            BorderSide? border = null,
@@ -123,7 +156,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public PageHeaderHelper AddColumnNumber(
+        public GridCaptionsHelper AddColumnNumber(
            double weight,
            string text,
            BorderSide? border = null,
@@ -136,7 +169,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public PageHeaderHelper AddColumnMoney(
+        public GridCaptionsHelper AddColumnMoney(
            double weight,
            string text,
            BorderSide? border = null,
@@ -149,7 +182,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public PageHeaderHelper AddColumnPercent(
+        public GridCaptionsHelper AddColumnPercent(
            double weight,
            string text,
            BorderSide? border = null,
@@ -162,7 +195,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public PageHeaderHelper SetBorder(BorderSide border)
+        public GridCaptionsHelper SetBorder(BorderSide border)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)
@@ -172,7 +205,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public PageHeaderHelper SetAlignment(TextAlignment alignment)
+        public GridCaptionsHelper SetAlignment(TextAlignment alignment)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)

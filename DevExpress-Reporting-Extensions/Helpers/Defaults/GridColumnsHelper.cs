@@ -9,13 +9,13 @@ using DevExpressReportingExtensions.Reports;
 
 namespace DevExpressReportingExtensions.Helpers
 {
-    public class GridHelper : BaseDetailBandHelper
+    public class GridColumnsHelper : BaseDetailBandHelper
     {
         public XRTableRow ContainerControl { get; protected set; }
 
         public IEnumerable<XRTableCell> Columns { get { return this.ContainerControl.Cells; } }
         
-        public GridHelper(XtraReport report, XtraReportBase detailReport = null)
+        public GridColumnsHelper(XtraReport report, XtraReportBase detailReport = null)
             : base(report, detailReport)
         {
             this.ContainerBand.StyleName = this.CreateContainerBandStyle();
@@ -24,7 +24,7 @@ namespace DevExpressReportingExtensions.Helpers
 
         protected virtual string CreateContainerBandStyle()
         {
-            var styleName = $"{nameof(GridHelper)}_{nameof(DetailBand)}";
+            var styleName = $"{nameof(GridColumnsHelper)}_{nameof(DetailBand)}";
             this.RootReport.StyleSheet.Add(new XRControlStyle()
             {
                 Name = styleName,
@@ -70,7 +70,7 @@ namespace DevExpressReportingExtensions.Helpers
             return result;
         }
 
-        public GridHelper AddColumn(
+        public GridColumnsHelper AddColumn(
             double weight,
             string dataMember,
             string formatString,
@@ -97,7 +97,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public GridHelper AddColumn(
+        public GridColumnsHelper AddColumn(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -106,7 +106,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this.AddColumn(weight, dataMember, null, border, alignment);
         }
 
-        public GridHelper AddColumn(
+        public GridColumnsHelper AddColumn(
             double weight,
             string dataMember,
             TextAlignment alignment)
@@ -114,7 +114,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this.AddColumn(weight, dataMember, null, null, alignment);
         }
 
-        public GridHelper AddColumnDate(
+        public GridColumnsHelper AddColumnDate(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -127,7 +127,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public GridHelper AddColumnDateTime(
+        public GridColumnsHelper AddColumnDateTime(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -140,7 +140,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public GridHelper AddColumnNumber(
+        public GridColumnsHelper AddColumnNumber(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -155,7 +155,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public GridHelper AddColumnMoney(
+        public GridColumnsHelper AddColumnMoney(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -170,7 +170,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public GridHelper AddColumnPercent(
+        public GridColumnsHelper AddColumnPercent(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -185,7 +185,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public GridHelper SetFormat(string formatString)
+        public GridColumnsHelper SetFormat(string formatString)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)
@@ -195,7 +195,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public GridHelper SetBorder(BorderSide border)
+        public GridColumnsHelper SetBorder(BorderSide border)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)
@@ -205,7 +205,7 @@ namespace DevExpressReportingExtensions.Helpers
             return this;
         }
 
-        public GridHelper SetAlignment(TextAlignment alignment)
+        public GridColumnsHelper SetAlignment(TextAlignment alignment)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)
