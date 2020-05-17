@@ -1,6 +1,6 @@
-﻿using System.Drawing.Printing;
+﻿using System.Drawing;
+using System.Drawing.Printing;
 
-using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions
@@ -23,12 +23,8 @@ namespace DevExpressReportingExtensions
             public static string Number = "{0:N}";
             public static string Money = "{0:C}";
             public static string Percent = "{0:P}";
-        }
 
-        public static class PageNumbers
-        {
-            public static TextAlignment Alignment = TextAlignment.TopRight;
-            public static string FormatString = "Page {0} of {1}";
+            public const string PageNumber = "Page {0} of {1}";
         }
 
     }

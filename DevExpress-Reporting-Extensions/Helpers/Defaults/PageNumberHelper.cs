@@ -22,8 +22,8 @@ namespace DevExpressReportingExtensions.Helpers
             this.ContainerBand = this.CreateContainerBand();
 
             this.ContainerControl = this.CreateContainerControls(
-                alignment ?? ReportConstants.PageNumbers.Alignment,
-                    formatString ?? ReportConstants.PageNumbers.FormatString);
+                alignment ?? TextAlignment.MiddleRight,
+                    formatString ?? ReportConstants.FormatStrings.PageNumber);
         }
 
         protected virtual BottomMarginBand CreateContainerBand()
