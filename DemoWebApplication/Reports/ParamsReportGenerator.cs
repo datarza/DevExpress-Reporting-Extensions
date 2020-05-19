@@ -4,8 +4,8 @@ using DemoWebApplication.Models;
 
 using DevExpress.XtraReports.Parameters;
 
-using DevExpressReportingExtensions.Reports;
-using DevExpressReportingExtensions.Helpers;
+using DevExpressReportingExtensions.Extensions;
+using DevExpressReportingExtensions.DecorationHelpers;
 
 namespace DemoWebApplication.Reports
 {
@@ -40,13 +40,13 @@ namespace DemoWebApplication.Reports
 
         // define decorations
 
-        ReportHeaderHelper headerHelper;
+        SimpleReportHeaderHelper headerHelper;
 
         private void InitializeDecorations()
         {
             this.headerHelper = this.AddReportHeader("Filtering the data", "Report example");
 
-            this.AddCombinedGrid()
+            this.AddGrid()
                 .AddColumn(1D, "Number", nameof(Person.Number))
                 .AddColumn(1.5D, "First Name", nameof(Person.FirstName))
                 .AddColumn(1.5D, "Last Name", nameof(Person.LastName))
@@ -56,13 +56,13 @@ namespace DemoWebApplication.Reports
                 .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
                 .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
 
-            this.AddGroupHeader(nameof(Person.Department), "{0} Department").AdjustBorderStyleFromDetail();
+            this.AddGroupHeader(nameof(Person.Department));
 
-            this.AddGroupFooter().AdjustBorderStyleFromDetail()
+            this.AddGroupFooter()
                 .AddColumnCount(9.0D, nameof(Person.Number))
                 .AddColumnMoney(1.5D, nameof(Person.Salary));
 
-            this.AddPageNumber();
+            this.AddPageNumbers();
         }
 
         // bind data based on parameters
@@ -74,8 +74,8 @@ namespace DemoWebApplication.Reports
             var dateFrom = dateFromParam.GetValue<DateTime>();
             var dateTo = dateToParam.GetValue<DateTime>();
 
-            this.headerHelper.PrintPeriodOnMainSubTitle(dateFrom, dateTo);
-            this.headerHelper.PrintDateOnSecondSubTitle(DateTime.Now);
+            this.headerHelper.PrintDatesInterval(dateFrom, dateTo);
+            this.headerHelper.PrintCurrentTime(DateTime.Now);
 
             this.DataSource = SimulatedReportData.GetBigData(dateFrom, dateTo);
         }

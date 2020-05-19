@@ -5,7 +5,7 @@ using System.Linq;
 using DevExpress.XtraReports.Parameters;
 using DevExpress.XtraReports.UI;
 
-namespace DevExpressReportingExtensions.Reports
+namespace DevExpressReportingExtensions.Extensions
 {
     public static partial class ParameterExtensions
     {
@@ -84,10 +84,16 @@ namespace DevExpressReportingExtensions.Reports
 
             return parameter;
         }
-        
+
+        public static Parameter SetDrowDown<TKey>(this Parameter parameter,
+            IReadOnlyDictionary<TKey, string> lookUpValues)
+        {
+            return SetDrowDown(parameter, lookUpValues, null);
+        }
+
         public static Parameter SetDrowDown<TKey>(this Parameter parameter,
             IReadOnlyDictionary<TKey, string> lookUpValues,
-            TKey[] value = null) 
+            params TKey[] value) 
         {
             if (lookUpValues == null)
             {

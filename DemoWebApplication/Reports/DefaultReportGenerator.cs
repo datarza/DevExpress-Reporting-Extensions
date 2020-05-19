@@ -2,8 +2,8 @@
 
 using DemoWebApplication.Models;
 
-using DevExpressReportingExtensions.Reports;
-using DevExpressReportingExtensions.Helpers;
+using DevExpressReportingExtensions.Extensions;
+using DevExpressReportingExtensions.DecorationHelpers;
 
 namespace DemoWebApplication.Reports
 {
@@ -26,7 +26,7 @@ namespace DemoWebApplication.Reports
         {
             this.AddReportHeader("Simple", "Report example");
 
-            this.AddCombinedGrid()
+            this.AddGrid()
                 .AddColumn(1D, "Number", nameof(Person.Number))
                 .AddColumn(1.5D, "First Name", nameof(Person.FirstName))
                 .AddColumn(1.5D, "Last Name", nameof(Person.LastName))
@@ -37,7 +37,7 @@ namespace DemoWebApplication.Reports
                 .AddColumnDate(1D, "Finished", nameof(Person.DismissalDate))
                 .AddColumnMoney(1.5D, "Salary", nameof(Person.Salary));
 
-            this.AddPageNumber();
+            this.AddPageNumbers();
         }
 
         // bind data 

@@ -27,5 +27,21 @@ namespace DevExpressReportingExtensions
             public const string PageNumber = "Page {0} of {1}";
         }
 
+        public static class Colors
+        {
+            public static readonly Color Base = Color.FromArgb(0x33, 0x33, 0x33);
+
+            public static readonly Color Header = Color.Gray;
+            public static readonly Color SubHeader = Color.SteelBlue;
+            public static readonly Color ColumnHeader = Color.DimGray;
+
+            public static readonly Color GroupEven = Color.Coral;
+            public static readonly Color GroupOdd = Color.SteelBlue;
+
+            public static readonly Color Border = Color.LightGray;
+
+            public static readonly Color PageNumber = Color.Gray;
+        }
+
     }
 }

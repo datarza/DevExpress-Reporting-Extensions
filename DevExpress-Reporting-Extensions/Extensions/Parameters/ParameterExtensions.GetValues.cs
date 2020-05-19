@@ -2,7 +2,7 @@
 
 using DevExpress.XtraReports.Parameters;
 
-namespace DevExpressReportingExtensions.Reports
+namespace DevExpressReportingExtensions.Extensions
 {
     public static partial class ParameterExtensions
     {
@@ -24,6 +24,41 @@ namespace DevExpressReportingExtensions.Reports
                 }
             }
         }
-        
+
+        public static DateTime? GetDateTimeValue(this Parameter parameter, DateTime? defaultValue = null)
+        {
+            if (parameter.Value is string)
+            {
+                DateTime result;
+                if (DateTime.TryParse((string)parameter.Value, out result))
+                {
+                    return result;
+                }
+                else
+                {
+                    return defaultValue;
+                }
+            }
+            else if (parameter.Value is DateTime)
+            {
+                return (DateTime)parameter.Value;
+            }
+            else if (parameter.Value is DateTime?)
+            {
+                return (DateTime?)parameter.Value;
+            }
+            else
+            {
+                try
+                {
+                    return (DateTime?)Convert.ChangeType(parameter.Value, typeof(DateTime?));
+                }
+                catch
+                {
+                    return defaultValue;
+                }
+            }
+        }
+
     }
 }
