@@ -11,8 +11,8 @@ namespace DevExpressReportingExtensions
         {
             public static bool IsLandscape = false;
             public static PaperKind Paper = XtraReport.DefaultPaperKind;
-            public static int HorizontalMargin = 50;
-            public static int VerticalMargin = 50;
+            public static int HorizontalMargin = 75;
+            public static int VerticalMargin = 75;
         }
 
         public static class FormatStrings

@@ -6,24 +6,24 @@ namespace DevExpressReportingExtensions.Extensions
 {
     public static partial class BandExtensions
     {
-        public static SimplePageNumberHelper AddPageNumbers(this XtraReport report)
+        public static PageNumberHelper AddPageNumbers(this XtraReport report)
         {
-            return new SimplePageNumberHelper(report.AddBottomMarginBand());
+            return new PageNumberHelper(report.AddBottomMarginBand());
         }
 
-        public static SimplePageNumberHelper AddPageNumbers(this XtraReport report, Band runningBand)
+        public static PageNumberHelper AddPageNumbers(this XtraReport report, Band runningBand)
         {
-            return new SimplePageNumberHelper(report.AddBottomMarginBand(), runningBand);
+            return new PageNumberHelper(report.AddBottomMarginBand(), runningBand);
         }
         
-        public static SimplePageNumberHelper AddPageNumbers(this Band band)
+        public static PageNumberHelper AddPageNumbers(this Band band)
         {
-            return new SimplePageNumberHelper(band);
+            return new PageNumberHelper(band);
         }
 
-        public static SimplePageNumberHelper AddPageNumbers(this Band band, Band runningBand)
+        public static PageNumberHelper AddPageNumbers(this Band band, Band runningBand)
         {
-            return new SimplePageNumberHelper(band, runningBand);
+            return new PageNumberHelper(band, runningBand);
         }
 
     }

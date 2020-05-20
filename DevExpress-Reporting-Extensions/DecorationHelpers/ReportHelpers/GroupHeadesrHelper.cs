@@ -8,9 +8,9 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.DecorationHelpers
 {
-    public class HierarchicalGroupHeaderHelper : BaseMasterDetailReportHelper
+    public class GroupHeadersHelper : BaseMasterDetailReportHelper
     {
-        protected readonly IList<SimpleGroupHeaderHelper> headerHelpers;
+        protected readonly IList<GroupHeaderHelper> headerHelpers;
 
         public IEnumerable<GroupHeaderBand> HeaderBands
         {
@@ -28,17 +28,17 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             }
         }
 
-        public HierarchicalGroupHeaderHelper(XtraReport report,
+        public GroupHeadersHelper(XtraReport report,
             params string[] fieldNames)
             : this(report, null, fieldNames)
         {
         }
 
-        public HierarchicalGroupHeaderHelper(XtraReport report, XtraReportBase detailReport,
+        public GroupHeadersHelper(XtraReport report, XtraReportBase detailReport,
             params string[] fieldNames)
             : base(report, detailReport)
         {
-            this.headerHelpers = new List<SimpleGroupHeaderHelper>(fieldNames.Length);
+            this.headerHelpers = new List<GroupHeaderHelper>(fieldNames.Length);
             if (fieldNames != null && fieldNames.Length > 0)
             {
                 for (int i = fieldNames.Length - 1; i >= 0; i--)

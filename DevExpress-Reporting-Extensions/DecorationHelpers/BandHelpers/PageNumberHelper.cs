@@ -8,17 +8,17 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.DecorationHelpers
 {
-    public class SimplePageNumberHelper : BaseBandHelper
+    public class PageNumberHelper : BaseBandHelper<Band>
     {
         public XRPageInfo ContainerControl { get; private set; }
 
-        public SimplePageNumberHelper(Band band)
+        public PageNumberHelper(Band band)
             : base(band)
         {
             this.InitializeContainer();
         }
 
-        public SimplePageNumberHelper(Band band, Band runningBand)
+        public PageNumberHelper(Band band, Band runningBand)
             : base(band)
         {
             this.InitializeContainer();
@@ -32,7 +32,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
                 AnchorHorizontal = HorizontalAnchorStyles.Both,
                 BoundsF = new RectangleF(0F, this.ContainerBand.GetMinPossibleTopPosition(),
                     this.RootReport.GetBandWidth(), 20F),
-                //CanGrow = true, - it does not work
+                //CanGrow = true, 
                 //CanShrink = true, 
                 ForeColor = ReportConstants.Colors.PageNumber,
                 Padding = new PaddingInfo(4, 4, 0, 0),
@@ -45,7 +45,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             this.ContainerBand.Controls.Add(this.ContainerControl);
         }
 
-        public virtual SimplePageNumberHelper SetRunningBand(Band runningBand)
+        public virtual PageNumberHelper SetRunningBand(Band runningBand)
         {
             this.ContainerControl.RunningBand = runningBand;
             return this;

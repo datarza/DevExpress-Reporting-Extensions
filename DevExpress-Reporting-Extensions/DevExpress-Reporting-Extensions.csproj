@@ -85,13 +85,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DecorationHelpers\BandHelpers\BaseClasses\BaseBandHelper.cs" />
-    <Compile Include="DecorationHelpers\BandHelpers\BaseClasses\BaseGroupHeaderBandHelper.cs" />
-    <Compile Include="DecorationHelpers\BandHelpers\SimpleGridColumnHelper.cs" />
-    <Compile Include="DecorationHelpers\BandHelpers\SimpleGridHeaderHelper.cs" />
-    <Compile Include="DecorationHelpers\BandHelpers\SimpleGroupFooterHelper.cs" />
-    <Compile Include="DecorationHelpers\BandHelpers\SimpleGroupHeaderHelper.cs" />
-    <Compile Include="DecorationHelpers\BandHelpers\SimplePageNumberHelper.cs" />
-    <Compile Include="DecorationHelpers\BandHelpers\SimpleReportHeaderHelper.cs" />
+    <Compile Include="DecorationHelpers\BandHelpers\GridColumnHelper.cs" />
+    <Compile Include="DecorationHelpers\BandHelpers\GridHeaderHelper.cs" />
+    <Compile Include="DecorationHelpers\BandHelpers\GroupFooterHelper.cs" />
+    <Compile Include="DecorationHelpers\BandHelpers\GroupHeaderHelper.cs" />
+    <Compile Include="DecorationHelpers\BandHelpers\PageNumberHelper.cs" />
+    <Compile Include="DecorationHelpers\BandHelpers\ReportHeaderHelper.cs" />
     <Compile Include="DecorationHelpers\CalculationHelpers\BaseClasses\BaseGroupCalculationHelper.cs" />
     <Compile Include="DecorationHelpers\CalculationHelpers\PercentGroupCalculationHelper.cs" />
     <Compile Include="DecorationHelpers\CalculationHelpers\PercentGroupCalculationTHelper.cs" />
@@ -106,8 +105,8 @@
     <Compile Include="DecorationHelpers\ReportHelpers\BaseClasses\BaseReportHeaderHelper.cs" />
     <Compile Include="DecorationHelpers\ReportHelpers\BaseClasses\BaseReportHelper.cs" />
     <Compile Include="DecorationHelpers\ReportHelpers\DetailReportHelper.cs" />
-    <Compile Include="DecorationHelpers\ReportHelpers\HierarchicalGroupHeaderHelper.cs" />
-    <Compile Include="DecorationHelpers\ReportHelpers\SimpleGridHelper.cs" />
+    <Compile Include="DecorationHelpers\ReportHelpers\GroupHeadesrHelper.cs" />
+    <Compile Include="DecorationHelpers\ReportHelpers\GridHelper.cs" />
     <Compile Include="Extensions\Bands\BandExtensions.Bands.cs" />
     <Compile Include="Extensions\Bands\BandExtensions.GridColumns.cs" />
     <Compile Include="Extensions\Bands\BandExtensions.GridHeaders.cs" />

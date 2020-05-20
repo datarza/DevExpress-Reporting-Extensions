@@ -9,11 +9,11 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.DecorationHelpers
 {
-    public class SimpleGroupHeaderHelper : BaseGroupHeaderBandHelper
+    public class GroupHeaderHelper : BaseBandHelper<GroupHeaderBand>
     {
         public XRLabel ContainerControl { get; private set; }
 
-        public SimpleGroupHeaderHelper(GroupHeaderBand band)
+        public GroupHeaderHelper(GroupHeaderBand band)
             : base(band)
         {
             this.InitializeContainer();
@@ -51,7 +51,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             this.ContainerBand.Controls.Add(this.ContainerControl);
         }
 
-        public SimpleGroupHeaderHelper AdjustBookmarks(XRControl bookmarkParent = null)
+        public GroupHeaderHelper AdjustBookmarks(XRControl bookmarkParent = null)
         {
             var binding = this.ContainerControl.GetTextBinding();
             if (binding != null)
@@ -65,7 +65,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupHeaderHelper AdjustBorderStyle()
+        public GroupHeaderHelper AdjustBorderStyle()
         {
             this.ContainerBand.BorderColor = ReportConstants.Colors.Border;
             this.ContainerBand.Borders = BorderSide.Bottom;

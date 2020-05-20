@@ -40,7 +40,7 @@ namespace DemoWebApplication.Reports
 
         // define decorations
 
-        SimpleReportHeaderHelper headerHelper;
+        ReportHeaderHelper headerHelper;
 
         private void InitializeDecorations()
         {

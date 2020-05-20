@@ -4,15 +4,15 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.DecorationHelpers.BaseClasses
 {
-    public abstract class BaseBandHelper
+    public abstract class BaseBandHelper<TBand> where TBand : Band
     {
         protected XtraReport RootReport { get; private set; }
 
         protected XtraReportBase Report { get; private set; }
 
-        public Band ContainerBand { get; private set; }
+        public TBand ContainerBand { get; private set; }
 
-        protected BaseBandHelper(Band band)
+        protected BaseBandHelper(TBand band)
         {
             this.ContainerBand = band ?? throw new ArgumentNullException(nameof(band));
             this.Report = band.Report;

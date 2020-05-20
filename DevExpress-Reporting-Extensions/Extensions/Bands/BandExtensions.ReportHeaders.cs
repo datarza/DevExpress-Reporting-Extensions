@@ -6,40 +6,40 @@ namespace DevExpressReportingExtensions.Extensions
 {
     public static partial class BandExtensions
     {
-        public static SimpleReportHeaderHelper AddReportHeader(this XtraReportBase report)
+        public static ReportHeaderHelper AddReportHeader(this XtraReportBase report)
         {
-            return new SimpleReportHeaderHelper(report.AddReportHeaderBand());
+            return new ReportHeaderHelper(report.AddReportHeaderBand());
         }
 
-        public static SimpleReportHeaderHelper AddReportHeader(this XtraReportBase report,
+        public static ReportHeaderHelper AddReportHeader(this XtraReportBase report,
             string mainTitle)
         {
-            return new SimpleReportHeaderHelper(report.AddReportHeaderBand(), mainTitle);
+            return new ReportHeaderHelper(report.AddReportHeaderBand(), mainTitle);
         }
 
-        public static SimpleReportHeaderHelper AddReportHeader(this XtraReportBase report,
+        public static ReportHeaderHelper AddReportHeader(this XtraReportBase report,
             string mainTitle,
             string secondTitle)
         {
-            return new SimpleReportHeaderHelper(report.AddReportHeaderBand(), mainTitle, secondTitle);
+            return new ReportHeaderHelper(report.AddReportHeaderBand(), mainTitle, secondTitle);
         }
                
-        public static SimpleReportHeaderHelper AddReportHeader(this Band band)
+        public static ReportHeaderHelper AddReportHeader(this Band band)
         {
-            return new SimpleReportHeaderHelper(band);
+            return new ReportHeaderHelper(band);
         }
 
-        public static SimpleReportHeaderHelper AddReportHeader(this Band band,
+        public static ReportHeaderHelper AddReportHeader(this Band band,
             string mainTitle)
         {
-            return new SimpleReportHeaderHelper(band, mainTitle);
+            return new ReportHeaderHelper(band, mainTitle);
         }
 
-        public static SimpleReportHeaderHelper AddReportHeader(this Band band,
+        public static ReportHeaderHelper AddReportHeader(this Band band,
             string mainTitle,
             string secondTitle)
         {
-            return new SimpleReportHeaderHelper(band, mainTitle, secondTitle);
+            return new ReportHeaderHelper(band, mainTitle, secondTitle);
         }
         
     }

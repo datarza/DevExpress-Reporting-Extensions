@@ -8,10 +8,10 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.DecorationHelpers
 {
-    public class SimpleGridHelper : BaseMasterDetailReportHelper
+    public class GridHelper : BaseMasterDetailReportHelper
     {
-        protected readonly SimpleGridHeaderHelper headerHelper;
-        protected readonly SimpleGridColumnHelper columnHelper;
+        protected readonly GridHeaderHelper headerHelper;
+        protected readonly GridColumnHelper columnHelper;
 
         public Band HeaderBand { get { return this.headerHelper.ContainerBand; } }
         public Band ColumnBand { get { return this.columnHelper.ContainerBand; } }
@@ -19,35 +19,35 @@ namespace DevExpressReportingExtensions.DecorationHelpers
         public IEnumerable<XRTableCell> Headers { get { return this.headerHelper.Columns; } }
         public IEnumerable<XRTableCell> Columns { get { return this.columnHelper.Columns; } }
 
-        public SimpleGridHelper(XtraReport report)
+        public GridHelper(XtraReport report)
             : base(report)
         {
             this.headerHelper = this.RootReport.AddPageHeaderBand().AddGridHeaders();
             this.columnHelper = this.Report.AddDetailBand().AddGridColumns();
         }
 
-        public SimpleGridHelper(XtraReport report, Band headersBand)
+        public GridHelper(XtraReport report, Band headersBand)
             : base(report)
         {
             this.headerHelper = headersBand.AddGridHeaders();
             this.columnHelper = this.Report.AddDetailBand().AddGridColumns();
         }
 
-        public SimpleGridHelper(XtraReport report, XtraReportBase detailReport)
+        public GridHelper(XtraReport report, XtraReportBase detailReport)
             : base(report, detailReport)
         {
             this.headerHelper = this.RootReport.AddPageHeaderBand().AddGridHeaders();
             this.columnHelper = this.Report.AddDetailBand().AddGridColumns();
         }
 
-        public SimpleGridHelper(XtraReport report, XtraReportBase detailReport, Band headersBand)
+        public GridHelper(XtraReport report, XtraReportBase detailReport, Band headersBand)
             : base(report, detailReport)
         {
             this.headerHelper = headersBand.AddGridHeaders();
             this.columnHelper = this.Report.AddDetailBand().AddGridColumns();
         }
 
-        public SimpleGridHelper AddColumn(
+        public GridHelper AddColumn(
             double weight,
             string text,
             string dataMember,
@@ -62,7 +62,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGridHelper AddColumn(
+        public GridHelper AddColumn(
             double weight,
             string text,
             string dataMember,
@@ -72,7 +72,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this.AddColumn(weight, text, dataMember, null, border, alignment);
         }
 
-        public SimpleGridHelper AddColumnDate(
+        public GridHelper AddColumnDate(
             double weight,
             string text,
             string dataMember,
@@ -86,7 +86,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGridHelper AddColumnDateTime(
+        public GridHelper AddColumnDateTime(
             double weight,
             string text,
             string dataMember,
@@ -101,7 +101,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
         }
 
 
-        public SimpleGridHelper AddColumnNumber(
+        public GridHelper AddColumnNumber(
             double weight,
             string text,
             string dataMember,
@@ -115,7 +115,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGridHelper AddColumnMoney(
+        public GridHelper AddColumnMoney(
             double weight,
             string text,
             string dataMember,
@@ -129,7 +129,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGridHelper AddColumnPercent(
+        public GridHelper AddColumnPercent(
             double weight,
             string text,
             string dataMember,
@@ -143,14 +143,14 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGridHelper SetFormat(string formatString)
+        public GridHelper SetFormat(string formatString)
         {
             this.columnHelper.SetFormat(formatString);
 
             return this;
         }
 
-        public SimpleGridHelper SetBorder(BorderSide border)
+        public GridHelper SetBorder(BorderSide border)
         {
             this.headerHelper.SetBorder(border);
 
@@ -159,14 +159,14 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGridHelper SetHeaderAlignment(TextAlignment alignment)
+        public GridHelper SetHeaderAlignment(TextAlignment alignment)
         {
             this.headerHelper.SetAlignment(alignment);
 
             return this;
         }
 
-        public SimpleGridHelper SetAlignment(TextAlignment alignment)
+        public GridHelper SetAlignment(TextAlignment alignment)
         {
             this.headerHelper.SetAlignment(alignment);
 

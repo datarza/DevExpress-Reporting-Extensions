@@ -10,7 +10,7 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.DecorationHelpers
 {
-    public class SimpleGroupFooterHelper : BaseBandHelper
+    public class GroupFooterHelper : BaseBandHelper<Band>
     {
         public SummaryRunning RunningBand { get; private set; }
 
@@ -20,21 +20,21 @@ namespace DevExpressReportingExtensions.DecorationHelpers
 
         public IEnumerable<XRTableCell> Columns { get { return this.ContainerControl.Cells; } }
        
-        public SimpleGroupFooterHelper(GroupFooterBand band)
+        public GroupFooterHelper(GroupFooterBand band)
             : base(band)
         {
             this.RunningBand = SummaryRunning.Group;
             this.InitializeContainer();
         }
 
-        public SimpleGroupFooterHelper(ReportFooterBand band)
+        public GroupFooterHelper(ReportFooterBand band)
             : base(band)
         {
             this.RunningBand = SummaryRunning.Report;
             this.InitializeContainer();
         }
 
-        public SimpleGroupFooterHelper(PageFooterBand band)
+        public GroupFooterHelper(PageFooterBand band)
             : base(band)
         {
             this.RunningBand = SummaryRunning.Page;
@@ -88,7 +88,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return result;
         }
 
-        public SimpleGroupFooterHelper AddColumn(double weight,
+        public GroupFooterHelper AddColumn(double weight,
             BorderSide? border = null)
         {
             var cell = this.ContainerControl.AddCell(weight);
@@ -99,7 +99,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupFooterHelper AddColumn(
+        public GroupFooterHelper AddColumn(
             double weight,
             string dataMember,
             SummaryFunc? summaryFunc = null,
@@ -132,7 +132,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupFooterHelper AddColumnCount(
+        public GroupFooterHelper AddColumnCount(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -149,7 +149,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupFooterHelper AddColumnNumber(
+        public GroupFooterHelper AddColumnNumber(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -166,7 +166,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupFooterHelper AddColumnMoney(
+        public GroupFooterHelper AddColumnMoney(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -183,7 +183,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupFooterHelper AddColumnPercent(
+        public GroupFooterHelper AddColumnPercent(
             double weight,
             string dataMember,
             BorderSide? border = null,
@@ -200,7 +200,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupFooterHelper AddColumnPercent<T>(
+        public GroupFooterHelper AddColumnPercent<T>(
             double weight,
             string dataMember,
             Func<T, decimal?> numeratorGetValue,
@@ -221,7 +221,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupFooterHelper AddColumnPercent(
+        public GroupFooterHelper AddColumnPercent(
             double weight,
             string dataMember,
             string numeratorColumnName,
@@ -242,7 +242,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupFooterHelper SetFormat(string formatString)
+        public GroupFooterHelper SetFormat(string formatString)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)
@@ -252,7 +252,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupFooterHelper SetBorder(BorderSide border)
+        public GroupFooterHelper SetBorder(BorderSide border)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)
@@ -262,7 +262,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleGroupFooterHelper SetAlignment(TextAlignment alignment)
+        public GroupFooterHelper SetAlignment(TextAlignment alignment)
         {
             var cell = this.ContainerControl.GetLastCell();
             if (cell != null)

@@ -7,35 +7,35 @@ namespace DevExpressReportingExtensions.Extensions
 {
     public static partial class BandExtensions
     {
-        public static SimpleGroupFooterHelper AddGroupFooterFranchise(this XtraReport report)
+        public static GroupFooterHelper AddGroupFooterFranchise(this XtraReport report)
         {
             var detailReport = report.GetLastDetailReport();
-            return new SimpleGroupFooterHelper(detailReport.AddGroupFooterBand());
+            return new GroupFooterHelper(detailReport.AddGroupFooterBand());
         }
 
-        public static SimpleGroupFooterHelper AddGroupFooterFranchise(this DetailReportBand report)
+        public static GroupFooterHelper AddGroupFooterFranchise(this DetailReportBand report)
         {
-            return new SimpleGroupFooterHelper(report.AddGroupFooterBand());
+            return new GroupFooterHelper(report.AddGroupFooterBand());
         }
 
-        public static SimpleGroupFooterHelper AddGroupFooter(this XtraReportBase report)
+        public static GroupFooterHelper AddGroupFooter(this XtraReportBase report)
         {
-            return new SimpleGroupFooterHelper(report.AddGroupFooterBand());
+            return new GroupFooterHelper(report.AddGroupFooterBand());
         }
 
-        public static SimpleGroupFooterHelper AddGroupFooter(this GroupFooterBand band)
+        public static GroupFooterHelper AddGroupFooter(this GroupFooterBand band)
         {
-            return new SimpleGroupFooterHelper(band);
+            return new GroupFooterHelper(band);
         }
 
-        public static SimpleGroupFooterHelper AddGroupFooter(this ReportFooterBand band)
+        public static GroupFooterHelper AddGroupFooter(this ReportFooterBand band)
         {
-            return new SimpleGroupFooterHelper(band);
+            return new GroupFooterHelper(band);
         }
 
-        public static SimpleGroupFooterHelper AddGroupFooter(this PageFooterBand band)
+        public static GroupFooterHelper AddGroupFooter(this PageFooterBand band)
         {
-            return new SimpleGroupFooterHelper(band);
+            return new GroupFooterHelper(band);
         }
 
     }

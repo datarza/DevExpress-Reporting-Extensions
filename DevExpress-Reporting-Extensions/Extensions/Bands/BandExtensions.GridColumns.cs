@@ -6,14 +6,14 @@ namespace DevExpressReportingExtensions.Extensions
 {
     public static partial class BandExtensions
     {
-        public static SimpleGridColumnHelper AddGridColumns(this XtraReportBase report)
+        public static GridColumnHelper AddGridColumns(this XtraReportBase report)
         {
-            return new SimpleGridColumnHelper(report.AddDetailBand());
+            return new GridColumnHelper(report.AddDetailBand());
         }
 
-        public static SimpleGridColumnHelper AddGridColumns(this Band band)
+        public static GridColumnHelper AddGridColumns(this Band band)
         {
-            return new SimpleGridColumnHelper(band);
+            return new GridColumnHelper(band);
         }
         
     }

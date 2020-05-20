@@ -6,14 +6,14 @@ namespace DevExpressReportingExtensions.Extensions
 {
     public static partial class BandExtensions
     {
-        public static SimpleGridHeaderHelper AddGridHeaders(this XtraReport report)
+        public static GridHeaderHelper AddGridHeaders(this XtraReport report)
         {
-            return new SimpleGridHeaderHelper(report.AddPageHeaderBand());
+            return new GridHeaderHelper(report.AddPageHeaderBand());
         }
 
-        public static SimpleGridHeaderHelper AddGridHeaders(this Band band)
+        public static GridHeaderHelper AddGridHeaders(this Band band)
         {
-            return new SimpleGridHeaderHelper(band);
+            return new GridHeaderHelper(band);
         }
 
     }

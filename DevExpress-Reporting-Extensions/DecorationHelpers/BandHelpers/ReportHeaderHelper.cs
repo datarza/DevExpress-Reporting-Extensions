@@ -9,7 +9,7 @@ using DevExpress.XtraReports.UI;
 
 namespace DevExpressReportingExtensions.DecorationHelpers
 {
-    public class SimpleReportHeaderHelper : BaseBandHelper
+    public class ReportHeaderHelper : BaseBandHelper<Band>
     {
         public XRTable ContainerControl { get; private set; }
 
@@ -21,7 +21,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
 
         public XRLabel CurrentTimeLabel { get; private set; }
 
-        public SimpleReportHeaderHelper(Band band)
+        public ReportHeaderHelper(Band band)
             : base(band)
         {
             this.InitializeContainer();
@@ -31,14 +31,14 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             }
         }
 
-        public SimpleReportHeaderHelper(Band band, string mainTitle)
+        public ReportHeaderHelper(Band band, string mainTitle)
             : base(band)
         {
             this.InitializeContainer();
             this.SetMainTitleText(mainTitle);
         }
 
-        public SimpleReportHeaderHelper(Band band, string mainTitle, string secondTitle)
+        public ReportHeaderHelper(Band band, string mainTitle, string secondTitle)
             : base(band)
         {
             this.InitializeContainer();
@@ -142,25 +142,25 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             };
         }
 
-        public SimpleReportHeaderHelper SetMainTitleText(string text)
+        public ReportHeaderHelper SetMainTitleText(string text)
         {
             this.MainTitleLabel.Text = text;
             return this;
         }
 
-        public SimpleReportHeaderHelper SetSecondTitleText(string text)
+        public ReportHeaderHelper SetSecondTitleText(string text)
         {
             this.SecondTitleLabel.Text = text;
             return this;
         }
 
-        public SimpleReportHeaderHelper BindSecondTitleText(string dataMember)
+        public ReportHeaderHelper BindSecondTitleText(string dataMember)
         {
             this.SecondTitleLabel.AddTextBinding(this.Report.JoinWithDataMember(dataMember));
             return this;
         }
 
-        public SimpleReportHeaderHelper BindSecondTitleTextAndBookmark(string dataMember)
+        public ReportHeaderHelper BindSecondTitleTextAndBookmark(string dataMember)
         {
             var controlDataMember = this.Report.JoinWithDataMember(dataMember);
             this.SecondTitleLabel.AddTextBinding(controlDataMember);
@@ -168,7 +168,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleReportHeaderHelper PrintDatesInterval(DateTime? dateFrom, DateTime? dateTo)
+        public ReportHeaderHelper PrintDatesInterval(DateTime? dateFrom, DateTime? dateTo)
         {
             if (dateFrom.HasValue && dateTo.HasValue)
             {
@@ -189,7 +189,7 @@ namespace DevExpressReportingExtensions.DecorationHelpers
             return this;
         }
 
-        public SimpleReportHeaderHelper PrintCurrentTime(DateTime? printTime)
+        public ReportHeaderHelper PrintCurrentTime(DateTime? printTime)
         {
             if (printTime.HasValue)
             {
