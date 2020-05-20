@@ -2,6 +2,8 @@ I often use [DevExpress Reporting](https://www.devexpress.com/subscriptions/repo
 
 That's why I created extensions, that makes report development with the DevExpress library easier and more intuitive. Instead of using the Report Designer, developer can generate the reports directly in C# code.
 
+PS: The Similar problems exist in WinForms. To solve them, I created project [DataViewExtenders](https://github.com/CanadianBeaver/DataViewExtenders).
+
 #### How does it work?
 
 The simplest example demonstrates the main approach:
