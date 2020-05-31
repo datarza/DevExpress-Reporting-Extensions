@@ -83,6 +83,6 @@ Library depends on the [DevExpress Reporting](https://www.devexpress.com/subscri
 
 #### Support or Contact
 
-Please, read the [Wiki](../../wiki) pages for detail information. Also, `DemoWebApplication` contains many usefull examples.
+Please, read the [Wiki](../../wiki) pages for detail information. Also, `DemoWebApplication` contains several usefull examples.
 
 Having questions? [Contact me](https://github.com/CanadianBeaver) and I will help you sort it out.
